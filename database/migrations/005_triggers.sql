@@ -462,3 +462,52 @@ CREATE TRIGGER trg_aplicar_venta
 AFTER INSERT ON public.renglon_comprobante
 FOR EACH ROW
 EXECUTE FUNCTION public.fn_trg_aplicar_venta();
+-- RN-09: validar y bloquear stock antes de insertar la venta.
+-- El AFTER INSERT realiza el descuento efectivo.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_validar_stock_venta()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = pg_catalog, pg_temp
+AS $$
+DECLARE
+    v_disponible INTEGER;
+BEGIN
+    SELECT s.cantidad
+    INTO v_disponible
+    FROM public.comprobante AS c
+    JOIN public.stock_sala AS s
+      ON s.id_sala = c.id_sala
+     AND s.cod_vino = NEW.cod_vino
+    WHERE c.numero_comprobante = NEW.numero_comprobante
+    FOR UPDATE OF s;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION
+            'No existe stock de sala para el vino % y comprobante %',
+            NEW.cod_vino, NEW.numero_comprobante
+            USING ERRCODE = '23514';
+    END IF;
+
+    IF v_disponible < NEW.cantidad THEN
+        RAISE EXCEPTION
+            'Stock insuficiente del vino %: disponible %, solicitado %',
+            NEW.cod_vino, v_disponible, NEW.cantidad
+            USING ERRCODE = '23514';
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.fn_trg_validar_stock_venta()
+FROM PUBLIC;
+
+DROP TRIGGER IF EXISTS trg_validar_stock_venta
+ON public.renglon_comprobante;
+
+CREATE TRIGGER trg_validar_stock_venta
+BEFORE INSERT ON public.renglon_comprobante
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_stock_venta();

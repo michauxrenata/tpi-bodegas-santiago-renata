@@ -512,3 +512,8 @@ FROM rol_operador_ventas;
 GRANT INSERT (numero_comprobante, cod_vino, cantidad)
 ON public.renglon_comprobante
 TO rol_operador_ventas;
+ALTER FUNCTION public.fn_trg_validar_stock_venta()
+OWNER TO rol_propietario_ventas;
+
+REVOKE ALL ON FUNCTION public.fn_trg_validar_stock_venta()
+FROM PUBLIC;
