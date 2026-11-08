@@ -1,0 +1,6 @@
+Versiones: Vale 5cf3e0bedec0eac991428cb99526753706633c8e; Sol ede9c69ad62cdb1df9ba30158965a815fd58469f
+BLOQUEO triggers de Sol: 42601 too many parameters specified for RAISE
+OK: API no puede escribir stock_sala directamente
+BLOQUEO CALL API con 007 actual: 42501 permission denied for table renglon_ingreso
+BLOQUEO transición a terminado: 42501 permission denied for table ingreso
+No se certifica integración. Bloqueos reproducidos: 3

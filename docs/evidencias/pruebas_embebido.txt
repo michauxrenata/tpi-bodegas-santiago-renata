@@ -1,0 +1,19 @@
+Continuación independiente de Santiago. Base: f209c37.
+Resultado observado: exit code 0.
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test
+> node validar.mjs
+
+[{"version":"PostgreSQL 18.6 (PGlite 0.5.11) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit"}]
+OK migration 001_esquema.sql
+OK migration 003_funciones.sql
+OK migration 004_procedimientos.sql
+OK migration 005_triggers.sql
+OK migration 008_indices.sql
+OK pruebas funcionales y rollback
+OK S9–S12: stock sin fanout, promedio por campaña, ranking, acumulado, división y anti-join
+OK U1–U5: importes, frontera de antigüedad, precios, día de cierre y rollback
+
+No verificados: Docker, roles, PostgreSQL servidor, concurrencia multisesión ni nube.

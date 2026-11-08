@@ -1,0 +1,11 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:transiciones
+> node transiciones.mjs
+
+Roles publicados de Vale: 657ec99c3b38b58d98865e514716850059a5aca5
+OK: rutinas nuevas cerradas a PUBLIC y operador antes de integración
+OK: flujo confección → terminado → procesado como operador restringido
+OK: IDs ausentes/nulos, documentos vacíos, bodega incompatible y repeticiones rechazados
+OK: terminar no mueve stock; procesar valida disponibilidad; rollback restaura datos
+LÍMITE: 005 local básico; no certifica triggers pendientes de Sol ni concurrencia multisesión
