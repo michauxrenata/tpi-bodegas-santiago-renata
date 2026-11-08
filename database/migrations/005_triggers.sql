@@ -21,6 +21,45 @@ BEGIN
     RETURN NEW;
 END;
 $$;
+-- RN-06: descuento base al insertar o cambiar el tipo de cliente.
+-- Una actualizacion de descuento, como U6, conserva su valor
+-- mientras el tipo de cliente no cambie.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_descuento_base_cliente()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
+AS $$
+DECLARE
+    v_asignar_base BOOLEAN;
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        v_asignar_base := TRUE;
+    ELSE
+        v_asignar_base :=
+            NEW.tipo_cliente IS DISTINCT FROM OLD.tipo_cliente;
+    END IF;
+
+    IF v_asignar_base THEN
+        NEW.descuento := CASE NEW.tipo_cliente
+            WHEN 'socio' THEN 0.10
+            WHEN 'distribuidor' THEN 0.20
+            WHEN 'exportador' THEN 0.30
+        END;
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trg_descuento_base_cliente
+ON public.cliente;
+
+CREATE TRIGGER trg_descuento_base_cliente
+BEFORE INSERT OR UPDATE OF tipo_cliente
+ON public.cliente
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_descuento_base_cliente();
 
 DROP TRIGGER IF EXISTS trg_validar_cantidad_comprobante
 ON renglon_comprobante;
