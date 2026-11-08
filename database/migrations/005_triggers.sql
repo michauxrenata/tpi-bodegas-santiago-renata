@@ -334,3 +334,131 @@ AFTER INSERT OR UPDATE OR DELETE ON composicion_vino
 DEFERRABLE INITIALLY DEFERRED
 FOR EACH ROW
 EXECUTE FUNCTION fn_trg_validar_composicion_vino();
+-- Venta nueva: precio historico e importes calculados por la BD.
+-- Solo INSERT: no reescribe ventas anteriores ni interfiere con U1.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_calcular_renglon_venta()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = pg_catalog, pg_temp
+AS $$
+DECLARE
+    v_id_cliente INTEGER;
+    v_precio NUMERIC;
+    v_tasa NUMERIC;
+    v_bruto NUMERIC;
+BEGIN
+    IF NEW.cantidad IS NULL OR NEW.cantidad <= 0 THEN
+        RAISE EXCEPTION 'La cantidad debe ser mayor que cero'
+            USING ERRCODE = '23514';
+    END IF;
+
+    -- Serializa la incorporacion de renglones al mismo comprobante.
+    SELECT c.id_cliente
+    INTO v_id_cliente
+    FROM public.comprobante AS c
+    WHERE c.numero_comprobante = NEW.numero_comprobante
+    FOR UPDATE;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Comprobante % inexistente',
+            NEW.numero_comprobante
+            USING ERRCODE = '23503';
+    END IF;
+
+    SELECT v.precio
+    INTO v_precio
+    FROM public.vino AS v
+    WHERE v.cod_vino = NEW.cod_vino;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Vino % inexistente', NEW.cod_vino
+            USING ERRCODE = '23503';
+    END IF;
+
+    v_tasa := public.fn_descuento_cliente(v_id_cliente);
+
+    NEW.precio_unitario := v_precio;
+    v_bruto := ROUND(NEW.cantidad::NUMERIC * NEW.precio_unitario, 2);
+    NEW.descuento := ROUND(v_bruto * v_tasa, 2);
+    NEW.subtotal := v_bruto - NEW.descuento;
+
+    RETURN NEW;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.fn_trg_calcular_renglon_venta()
+FROM PUBLIC;
+
+DROP TRIGGER IF EXISTS trg_calcular_renglon_venta
+ON public.renglon_comprobante;
+
+CREATE TRIGGER trg_calcular_renglon_venta
+BEFORE INSERT ON public.renglon_comprobante
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_calcular_renglon_venta();
+-- Se ejecuta solamente cuando el renglon fue insertado.
+-- Si no hay stock, se revierte la sentencia completa.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_aplicar_venta()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = pg_catalog, pg_temp
+AS $$
+DECLARE
+    v_id_sala INTEGER;
+    v_bruto NUMERIC;
+BEGIN
+    SELECT c.id_sala
+    INTO v_id_sala
+    FROM public.comprobante AS c
+    WHERE c.numero_comprobante = NEW.numero_comprobante
+    FOR UPDATE;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Comprobante % inexistente',
+            NEW.numero_comprobante
+            USING ERRCODE = '23503';
+    END IF;
+
+    -- Actualizacion atomica: dos ventas no pueden consumir
+    -- simultaneamente las mismas existencias.
+    UPDATE public.stock_sala
+    SET cantidad = cantidad - NEW.cantidad
+    WHERE id_sala = v_id_sala
+      AND cod_vino = NEW.cod_vino
+      AND cantidad >= NEW.cantidad;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION
+            'Stock insuficiente para el vino % en la sala %',
+            NEW.cod_vino, v_id_sala
+            USING ERRCODE = '23514';
+    END IF;
+
+    v_bruto := ROUND(
+        NEW.cantidad::NUMERIC * NEW.precio_unitario, 2
+    );
+
+    UPDATE public.comprobante
+    SET subtotal = subtotal + v_bruto,
+        descuento = descuento + NEW.descuento,
+        total = total + NEW.subtotal
+    WHERE numero_comprobante = NEW.numero_comprobante;
+
+    RETURN NEW;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.fn_trg_aplicar_venta()
+FROM PUBLIC;
+
+DROP TRIGGER IF EXISTS trg_aplicar_venta
+ON public.renglon_comprobante;
+
+CREATE TRIGGER trg_aplicar_venta
+AFTER INSERT ON public.renglon_comprobante
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_aplicar_venta();

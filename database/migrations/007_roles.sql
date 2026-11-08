@@ -491,3 +491,24 @@ TO rol_gerente_comercial;
 -- ============================================================
 -- FIN DEL ARCHIVO 007_roles.sql
 -- ============================================================
+-- Propietario tecnico de los triggers de ventas.
+ALTER FUNCTION public.fn_trg_calcular_renglon_venta()
+OWNER TO rol_propietario_ventas;
+
+ALTER FUNCTION public.fn_trg_aplicar_venta()
+OWNER TO rol_propietario_ventas;
+
+REVOKE ALL ON FUNCTION public.fn_trg_calcular_renglon_venta()
+FROM PUBLIC;
+
+REVOKE ALL ON FUNCTION public.fn_trg_aplicar_venta()
+FROM PUBLIC;
+
+-- La API aporta producto y cantidad.
+-- Precio, descuento y subtotal los calcula la BD.
+REVOKE INSERT ON public.renglon_comprobante
+FROM rol_operador_ventas;
+
+GRANT INSERT (numero_comprobante, cod_vino, cantidad)
+ON public.renglon_comprobante
+TO rol_operador_ventas;
