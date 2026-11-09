@@ -1,0 +1,56 @@
+EVIDENCIA DE CONEXION CON USUARIO RESTRINGIDO — H2
+
+Base de datos: bodegas_cierre_h2
+Usuario: prueba_login_h2
+Conexion: TCP a 127.0.0.1:5432 dentro del contenedor.
+
+1. IDENTIDAD DE LA SESION — SALIDA OBSERVADA
+
+  session_user   |  current_user   | current_database
+-----------------+-----------------+-------------------
+ prueba_login_h2 | prueba_login_h2 | bodegas_cierre_h2
+(1 row)
+
+2. ATRIBUTOS DEL ROL — SALIDA OBSERVADA
+
+     rolname     | rolsuper | rolcreatedb | rolcreaterole | rolbypassrls
+-----------------+----------+-------------+---------------+--------------
+ prueba_login_h2 | f        | f           | f             | f
+(1 row)
+
+El usuario no tiene privilegios de superusuario, creacion de
+bases, creacion de roles ni omision de las politicas RLS.
+
+3. ESCRITURA DIRECTA DE STOCK — SALIDA OBSERVADA
+
+Consulta:
+BEGIN;
+UPDATE public.stock_sala
+SET cantidad = 0
+WHERE FALSE;
+ROLLBACK;
+
+Resultado:
+BEGIN
+ERROR: permission denied for table stock_sala
+ROLLBACK
+
+La escritura directa fue rechazada. No se modificaron existencias.
+
+4. COMPROBACIONES ADICIONALES
+
+Se solicito verificar:
+- Lectura de public.vino mediante SELECT COUNT(*).
+- Permiso EXECUTE sobre sp_terminar_ingreso(integer).
+- Permiso EXECUTE sobre sp_procesar_transferencia(integer).
+
+La ejecutora confirmo haber completado estas comprobaciones
+con "listo". Sus salidas exactas no quedaron transcritas en
+esta evidencia.
+
+ALCANCE
+
+Se verifico una conexion real por TCP con el usuario restringido,
+su identidad, la ausencia de privilegios administrativos indicados
+y el rechazo de una escritura directa sobre stock_sala.
+
