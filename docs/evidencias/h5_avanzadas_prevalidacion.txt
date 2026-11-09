@@ -1,0 +1,19 @@
+PREVALIDACION S9-S12 Y U1-U6 - 2026-11-09
+Validador: tools/validacion_sql/validar.mjs, con migracion 006 agregada.
+Fuente de partida: commit c71a4d4, mas los cambios entregados en este paquete.
+
+[{"version":"PostgreSQL 18.6 (PGlite 0.5.11) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit"}]
+OK migration 001_esquema.sql
+OK constraints: database/migrations/002_constraints.sql local
+OK migration 003_funciones.sql
+OK migration 004_procedimientos.sql
+OK migration 005_triggers.sql
+OK migration 006_vistas.sql
+OK migration 008_indices.sql
+OK pruebas funcionales y rollback
+OK S9–S12: stock sin fanout, promedio por campaña, ranking, acumulado, división y anti-join
+OK U1–U6: importes, frontera de antigüedad, precios, día de cierre y rollback
+OK descuentos: 0/3/4 permisos, 35 %, idempotencia, persistencia, historia, recálculo explícito y rollback
+
+Codigo de salida: 0.
+Motor embebido: no sustituye ejecucion nativa PostgreSQL 16.

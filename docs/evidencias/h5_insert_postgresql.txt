@@ -1,0 +1,14 @@
+﻿VALIDACION I1-I6 EN POSTGRESQL 16.15
+Base: bodegas_carga_h3_completa
+Archivo: consultas/insert.sql
+Parametros: fecha_ref=2025-01-15, cliente=1, vino=1
+
+Salida final observada:
+=== I1-I6 finalizadas sin errores; datos revertidos ===
+Codigo de salida: 0
+
+Alcance: ejecucion de los seis ejercicios sobre la carga H3.
+Cada ejercicio revierte sus cambios mediante SAVEPOINT;
+la transaccion finaliza con ROLLBACK.
+Las secuencias identity pueden avanzar aunque las filas se reviertan.
+No se certifican todas las combinaciones ni concurrencia.

@@ -1,0 +1,24 @@
+﻿VALIDACION S12a - POSTGRESQL 16.15
+Base: bodegas_carga_h3_completa
+Bodega: 99010000001
+
+Antes:
+Consulta cancelada tras observar 00:07:44.956647 de ejecucion.
+Sin bloqueadores. El plan recorria comprobante mediante Seq Scan
+dentro de la subconsulta correlacionada.
+No se obtuvo tiempo final de esa ejecucion.
+
+Cambio:
+CREATE INDEX idx_comprobante_cliente_numero
+ON public.comprobante (id_cliente, numero_comprobante);
+Se ejecuto ANALYZE public.comprobante.
+
+Despues:
+Index Only Scan usando idx_comprobante_cliente_numero.
+Execution Time: 1023.484 ms.
+Resultado: 0 clientes.
+Medicion individual con EXPLAIN (ANALYZE, BUFFERS).
+
+Luego se ejecutaron S9-S12 y U1-U6 completos sin errores.
+Las actualizaciones finalizaron con ROLLBACK.
+Las salidas quedaron guardadas en docs/evidencias/.

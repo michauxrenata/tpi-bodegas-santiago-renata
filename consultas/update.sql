@@ -1,5 +1,5 @@
 -- Santiago · U1–U6. psql -v bodega=30123456789 -f consultas/update.sql
--- Pruebas reversibles; cada bloque es independiente. U6 requiere cliente.descuento (002 de Valentina).
+-- Pruebas reversibles; cada bloque es independiente. U6 usa cliente.descuento incorporado por la migracion 002.
 \set ON_ERROR_STOP on
 
 -- U1: ejercicio de recálculo con política ACTUAL. No ejecutar sobre historia real
@@ -29,7 +29,8 @@ UPDATE empleado SET salario = ROUND(salario * 1.20, 2)
 WHERE fecha_ingreso < (CURRENT_DATE - INTERVAL '5 years')::date RETURNING *;
 ROLLBACK;
 
--- U3: Sol debe integrar RN-13 para que este UPDATE también quede auditado.
+-- U3: el trigger RN-13 integrado registra los cambios de precio.
+-- ROLLBACK revierte tanto los precios como las filas de auditoria.
 BEGIN;
 UPDATE vino SET precio = ROUND(precio * 1.13, 2)
 WHERE cuit_bodega = :'bodega'::cuit_dom RETURNING *;
@@ -66,3 +67,4 @@ WHERE c.tipo_cliente = 'exportador'
   AND c.descuento IS DISTINCT FROM 0.35
 RETURNING c.id_cliente, c.tipo_cliente, c.descuento;
 ROLLBACK;
+

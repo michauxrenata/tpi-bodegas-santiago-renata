@@ -1,0 +1,15 @@
+﻿EJECUCION S1-S8 EN POSTGRESQL 16.15
+Base: bodegas_carga_h3_completa
+Parametros: sala=1, vino=1, fecha_ref=2025-01-15
+Codigo de salida: 0
+
+S1: 10 vinos; primero cod_vino 53 con 6278 botellas.
+S2: 300 vinos vendidos en todas las salas.
+S3: socio 63; distribuidor 72; exportador 76.
+S4: 0 filas; transferencias fuera del periodo.
+S5: 15 salas con 0 transferencias pendientes.
+S6: 0 filas; todos los vinos tienen stock en sala.
+S7: 0 filas; ingresos fuera del periodo.
+S8: 15 salas; primera sala 6 con ventas netas 580715757.33.
+
+Alcance: ejecucion sobre carga H3; no prueba todas las combinaciones.

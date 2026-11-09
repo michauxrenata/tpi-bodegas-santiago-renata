@@ -11,3 +11,8 @@ CREATE INDEX idx_renglon_comprobante_vino ON renglon_comprobante (cod_vino);
 CREATE INDEX idx_comprobante_fecha_incl ON comprobante (fecha) INCLUDE (id_sala, total);
 -- 5. Compuesto: rango de fechas primero para S4 global en todas las salas.
 CREATE INDEX idx_transferencia_fecha_sala ON transferencia (fecha_confeccion, id_sala);
+
+
+-- S12a: buscar las compras de un cliente sin recorrer todos los comprobantes.
+CREATE INDEX IF NOT EXISTS idx_comprobante_cliente_numero
+ON public.comprobante (id_cliente, numero_comprobante);

@@ -6,7 +6,7 @@ import {leerConstraints} from './leer_constraints.mjs';
 import {probarDescuentos} from './descuentos.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const db=new PGlite();
-const files=['001_esquema.sql','003_funciones.sql','004_procedimientos.sql','005_triggers.sql','008_indices.sql'];
+const files=['001_esquema.sql','003_funciones.sql','004_procedimientos.sql','005_triggers.sql','006_vistas.sql','008_indices.sql'];
 let log=[];
 log.push(JSON.stringify((await db.query('SELECT version()')).rows));
 for(const f of files){
@@ -55,3 +55,4 @@ await probarDescuentos(db,root);
 log.push('OK descuentos: 0/3/4 permisos, 35 %, idempotencia, persistencia, historia, recálculo explícito y rollback');
 console.log(log.join('\n'));
 await db.close();
+

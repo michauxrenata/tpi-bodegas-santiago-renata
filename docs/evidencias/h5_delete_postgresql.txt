@@ -1,0 +1,14 @@
+﻿VALIDACION D1-D6 EN POSTGRESQL 16.15
+Base: bodegas_carga_h3_completa
+Archivo: consultas/delete.sql
+Parametros: sala=1, cp_sala=5620, localidad_cliente=General Alvear
+Fecha de referencia: CURRENT_DATE de la ejecucion.
+
+Salida final observada:
+=== D1-D6 finalizados sin errores; datos revertidos ===
+Codigo de salida: 0
+
+Alcance: ejecucion de los seis ejercicios sobre la carga H3.
+Cada ejercicio revierte sus cambios mediante SAVEPOINT;
+la transaccion finaliza con ROLLBACK.
+No se certifican todas las combinaciones ni concurrencia.

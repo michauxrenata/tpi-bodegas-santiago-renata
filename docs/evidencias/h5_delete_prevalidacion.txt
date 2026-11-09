@@ -1,0 +1,17 @@
+PREVALIDACION EMBEBIDA D1-D6 - 2026-11-09
+Motor: PGlite; migraciones 001-008 y fixture H3 pequeno.
+SQL entregado sin metacomandos psql; parametros sala=1, cp_sala=5620,
+localidad_cliente=General Alvear. Fechas relativas a CURRENT_DATE.
+
+OK: D1-D6 ejecutados; contenido de las 29 tablas identico tras ROLLBACK.
+OK D1: elimina socio >5 anios y detalle; conserva frontera exacta y no socio; no repone stock.
+OK D2: elimina cepa libre; conserva referencia solo en parcela y solo en composicion.
+OK D3: elimina <2 anios en sala elegida; conserva 2 exactos, otra sala y alta futura.
+OK D4: elimina solo socios >5 anios sin compras; frontera y compra protegidas; cascada correcta.
+OK D5: elimina procesado 366 dias, conserva 365/364 y terminado; cascada sin alterar stock.
+OK D6: localidad y subtipo correctos, sin compras; conserva otra localidad, comprador y exportador.
+OK: todas las pruebas revierten sus datos.
+
+Codigo de salida: 0.
+Se comparo el contenido de las 29 tablas mediante hashes de filas ordenadas.
+Alcance: validacion embebida; no sustituye la ejecucion nativa PostgreSQL 16.

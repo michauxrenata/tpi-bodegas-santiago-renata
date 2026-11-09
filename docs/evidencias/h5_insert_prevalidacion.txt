@@ -1,0 +1,14 @@
+PREVALIDACION EMBEBIDA I1-I6 - 2026-11-09
+Motor: PGlite. Migraciones 001-008 y fixture H3 pequeno.
+Se ejecuto el SQL de consultas/insert.sql, sin metacomandos psql y con
+sustitucion de parametros fecha_ref=2025-01-15, cliente=1, vino=1.
+
+OK: I1-I6 ejecutadas sobre fixture H3 pequeno; stock y conteos restaurados.
+OK: I1 inserta cobertura faltante e incluye cero ingresos con desempate por codigo.
+OK: I2 acepta frontera 14, excluye 13.5 y segunda ejecucion no duplica.
+OK: I3 genera exactamente tres renglones, total por funcion y descuenta una botella de cada vino.
+OK: I6 rechaza vino de otra bodega; caso valido conserva stock y estado en_confeccion.
+
+Codigo de salida del validador: 0.
+Alcance: prevalidacion embebida, no evidencia de ejecucion nativa PostgreSQL 16.
+No certifica concurrencia ni todas las combinaciones de entradas.

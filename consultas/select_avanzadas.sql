@@ -1,6 +1,7 @@
 -- Santiago · S9–S12. Ejecutar con psql -v vino=... -v bodega=... -f ...
 \set ON_ERROR_STOP on
--- S9: consulta directa. Integración con vista pendiente de coordinar con Valentina.
+-- S9: ficha con joins, agregaciones y vista de stock de la migracion 006.
+-- Se agregan cepas y maridajes por separado para no multiplicar existencias.
 WITH cepas AS (
     SELECT cv.cod_vino, jsonb_agg(jsonb_build_object(
         'cepa', c.nombre, 'porcentaje', cv.porcentaje) ORDER BY c.nombre) AS composicion
@@ -10,18 +11,16 @@ WITH cepas AS (
         'maridaje', m.nombre, 'temperatura_c', m.temp_servicio_sugerida_c)
         ORDER BY m.nombre) AS maridajes
     FROM vino_maridaje vm JOIN maridaje m USING(id_maridaje) GROUP BY vm.cod_vino
-), salas AS (
-    SELECT cod_vino, SUM(cantidad) AS stock_salas FROM stock_sala GROUP BY cod_vino
 )
 SELECT v.*, b.razon_social AS bodega,
        COALESCE(c.composicion, '[]'::jsonb) AS composicion,
        COALESCE(m.maridajes, '[]'::jsonb) AS maridajes,
-       COALESCE(d.cantidad, 0) AS stock_deposito,
-       COALESCE(s.stock_salas, 0) AS stock_salas,
-       COALESCE(d.cantidad, 0) + COALESCE(s.stock_salas, 0) AS stock_total
+       s.stock_deposito_central AS stock_deposito,
+       s.stock_total_en_salas AS stock_salas,
+       s.stock_global AS stock_total
 FROM vino v JOIN bodega b ON b.cuit = v.cuit_bodega
 LEFT JOIN cepas c USING(cod_vino) LEFT JOIN maridajes m USING(cod_vino)
-LEFT JOIN stock_deposito d USING(cod_vino) LEFT JOIN salas s USING(cod_vino)
+JOIN public.vw_stock_total_vinos s USING(cod_vino)
 WHERE v.cod_vino = :'vino'::INTEGER;
 
 -- S10: promedio aritmético de rendimientos de parcelas cosechadas de la misma
@@ -75,3 +74,4 @@ LEFT JOIN (
     JOIN vino v USING(cod_vino) WHERE v.tipo = 'tinto'
 ) tintos ON tintos.id_cliente = c.id_cliente
 WHERE tintos.id_cliente IS NULL ORDER BY c.id_cliente;
+
