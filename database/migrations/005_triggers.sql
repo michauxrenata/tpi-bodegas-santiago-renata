@@ -142,38 +142,60 @@ EXECUTE FUNCTION fn_trg_proteger_fecha_transferencia();
 -- RN-12: bloqueo de renglones de ingresos fuera de confección
 -- ============================================================================
 
-CREATE OR REPLACE FUNCTION fn_trg_bloquear_renglon_ingreso()
+CREATE OR REPLACE FUNCTION public.fn_trg_bloquear_renglon_ingreso()
 RETURNS TRIGGER
 LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
 AS $$
 DECLARE
-    v_codigo_ingreso INTEGER;
-    v_estado estado_documento;
+    v_codigos INTEGER[];
+    v_codigo INTEGER;
+    v_estado public.estado_documento;
 BEGIN
-    v_codigo_ingreso := CASE
-        WHEN TG_OP = 'DELETE' THEN OLD.codigo_ingreso
-        ELSE NEW.codigo_ingreso
-    END;
-
-    SELECT estado
-    INTO v_estado
-    FROM ingreso
-    WHERE codigo_ingreso = v_codigo_ingreso;
-
-    IF NOT FOUND THEN
-        RAISE EXCEPTION
-            'No existe el ingreso asociado al renglón';
+    IF TG_OP = 'INSERT' THEN
+        v_codigos := ARRAY[NEW.codigo_ingreso];
+    ELSIF TG_OP = 'DELETE' THEN
+        v_codigos := ARRAY[OLD.codigo_ingreso];
+    ELSE
+        v_codigos := ARRAY[OLD.codigo_ingreso, NEW.codigo_ingreso];
     END IF;
 
-    IF v_estado <> 'en_confeccion' THEN
-        RAISE EXCEPTION
-            'RN-12: no se pueden modificar renglones de un ingreso que no está en confección';
+    -- Si cambia de documento, validar ambos, en orden estable.
+    FOR v_codigo IN
+        SELECT DISTINCT u.codigo
+        FROM unnest(v_codigos) AS u(codigo)
+        ORDER BY u.codigo
+    LOOP
+        SELECT i.estado
+        INTO v_estado
+        FROM public.ingreso AS i
+        WHERE i.codigo_ingreso = v_codigo
+        FOR UPDATE;
+
+        IF NOT FOUND THEN
+            IF TG_OP = 'DELETE' THEN
+                -- La FK mantiene la integridad: este caso permite
+                -- la eliminacion de detalles por ON DELETE CASCADE.
+                RETURN OLD;
+            END IF;
+
+            RAISE EXCEPTION 'Ingreso % inexistente', v_codigo
+                USING ERRCODE = '23503';
+        END IF;
+
+        IF v_estado <> 'en_confeccion' THEN
+            RAISE EXCEPTION
+                'RN-12: el ingreso % no admite cambios de renglones',
+                v_codigo
+                USING ERRCODE = '23514';
+        END IF;
+    END LOOP;
+
+    IF TG_OP = 'DELETE' THEN
+        RETURN OLD;
     END IF;
 
-    RETURN CASE
-        WHEN TG_OP = 'DELETE' THEN OLD
-        ELSE NEW
-    END;
+    RETURN NEW;
 END;
 $$;
 
@@ -511,3 +533,39 @@ CREATE TRIGGER trg_validar_stock_venta
 BEFORE INSERT ON public.renglon_comprobante
 FOR EACH ROW
 EXECUTE FUNCTION public.fn_trg_validar_stock_venta();
+-- RN-12: proteger detalles y permitir el borrado en cascada
+-- cuando la cabecera fue eliminada mediante una operacion autorizada.
+
+
+-- D5: depuracion historica; no revierte movimientos de stock.
+CREATE OR REPLACE FUNCTION public.fn_trg_validar_borrado_ingreso()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
+AS $$
+BEGIN
+    IF OLD.estado = 'en_confeccion' THEN
+        RETURN OLD;
+    END IF;
+
+    IF OLD.estado = 'procesado'
+       AND OLD.fecha < CURRENT_DATE - 365 THEN
+        RETURN OLD;
+    END IF;
+
+    RAISE EXCEPTION
+        'Solo se pueden borrar ingresos en confeccion o procesados de hace mas de 365 dias'
+        USING ERRCODE = '23514';
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trg_validar_borrado_ingreso
+ON public.ingreso;
+
+CREATE TRIGGER trg_validar_borrado_ingreso
+BEFORE DELETE ON public.ingreso
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_borrado_ingreso();
+
+REVOKE ALL ON FUNCTION public.fn_trg_validar_borrado_ingreso()
+FROM PUBLIC;
