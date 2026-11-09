@@ -1,0 +1,32 @@
+PRUEBA DE CONCURRENCIA — COMPOSICION DE VINOS (RN-05)
+
+Base: bodegas_qa_h2
+Aislamiento: READ COMMITTED
+Vino de prueba: -995
+Composicion inicial: 50 % y 50 %.
+
+Secuencia observada:
+1. La sesion A actualizo el componente -995 a 70 %, sin confirmar.
+2. La sesion B intento actualizar el mismo componente a 60 %.
+   Quedo esperando mientras A mantenia la transaccion abierta.
+3. La sesion A actualizo el componente -996 a 30 %.
+4. La sesion A ejecuto COMMIT correctamente.
+5. La actualizacion de B termino y B intento COMMIT.
+6. B recibio el error RN-05: la composicion sumaba 90 %.
+   Sus cambios no quedaron confirmados.
+
+Verificacion final:
+ id_cepa | porcentaje
+ -996    | 30.00
+ -995    | 70.00
+
+Total: 100.00
+
+Resultado:
+Se conservaron los cambios de A y se rechazo la composicion
+invalida de B al confirmar.
+
+Alcance:
+Prueba con dos sesiones en READ COMMITTED que modifican
+el mismo componente. No demuestra todos los escenarios
+de concurrencia ni otros niveles de aislamiento.
