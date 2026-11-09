@@ -324,48 +324,65 @@ EXECUTE FUNCTION fn_trg_validar_transicion_estado();
 -- RN-05: composición de cada vino exactamente igual al 100 %
 -- ============================================================================
 
-CREATE OR REPLACE FUNCTION fn_trg_validar_composicion_vino()
+CREATE OR REPLACE FUNCTION public.fn_trg_validar_composicion_vino()
 RETURNS TRIGGER
 LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
 AS $$
 DECLARE
+    v_codigos INTEGER[];
     v_cod_vino INTEGER;
     v_total NUMERIC;
 BEGIN
+    IF TG_OP = 'INSERT' THEN
+        v_codigos := ARRAY[NEW.cod_vino];
+    ELSIF TG_OP = 'DELETE' THEN
+        v_codigos := ARRAY[OLD.cod_vino];
+    ELSE
+        v_codigos := ARRAY[OLD.cod_vino, NEW.cod_vino];
+    END IF;
+
     FOR v_cod_vino IN
-        SELECT DISTINCT cod_vino
-        FROM (
-            SELECT CASE
-                WHEN TG_OP <> 'INSERT' THEN OLD.cod_vino
-            END AS cod_vino
-
-            UNION ALL
-
-            SELECT CASE
-                WHEN TG_OP <> 'DELETE' THEN NEW.cod_vino
-            END AS cod_vino
-        ) vinos_afectados
-        WHERE cod_vino IS NOT NULL
+        SELECT DISTINCT u.codigo
+        FROM unnest(v_codigos) AS u(codigo)
+        WHERE u.codigo IS NOT NULL
+        ORDER BY u.codigo
     LOOP
-        SELECT COALESCE(SUM(porcentaje), 0)
+        -- Si el vino fue eliminado, no exigir su composicion.
+        IF NOT EXISTS (
+            SELECT 1
+            FROM public.vino AS v
+            WHERE v.cod_vino = v_cod_vino
+        ) THEN
+            CONTINUE;
+        END IF;
+
+        SELECT COALESCE(SUM(c.porcentaje), 0)
         INTO v_total
-        FROM composicion_vino
-        WHERE cod_vino = v_cod_vino;
+        FROM public.composicion_vino AS c
+        WHERE c.cod_vino = v_cod_vino;
 
         IF v_total IS DISTINCT FROM 100::NUMERIC THEN
             RAISE EXCEPTION
-                'RN-05: la composición del vino % debe sumar 100%% y actualmente suma %',
-                v_cod_vino,
-                v_total;
+                'RN-05: la composicion del vino % debe sumar 100%% y actualmente suma %',
+                v_cod_vino, v_total
+                USING ERRCODE = '23514';
         END IF;
     END LOOP;
 
-    RETURN CASE
-        WHEN TG_OP = 'DELETE' THEN OLD
-        ELSE NEW
-    END;
+    -- El valor retornado no se utiliza en triggers AFTER.
+    RETURN NULL;
 END;
 $$;
+
+DROP TRIGGER IF EXISTS trg_validar_composicion_al_crear_vino ON public.vino;
+
+-- Detecta vinos nuevos incluso si no se insertaron componentes.
+CREATE CONSTRAINT TRIGGER trg_validar_composicion_al_crear_vino
+AFTER INSERT ON public.vino
+DEFERRABLE INITIALLY DEFERRED
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_composicion_vino();
 
 DROP TRIGGER IF EXISTS trg_validar_composicion_vino
 ON composicion_vino;
