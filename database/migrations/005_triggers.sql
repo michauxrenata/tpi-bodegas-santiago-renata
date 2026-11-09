@@ -212,38 +212,57 @@ EXECUTE FUNCTION fn_trg_bloquear_renglon_ingreso();
 -- RN-12: bloqueo de renglones de transferencias fuera de confección
 -- ============================================================================
 
-CREATE OR REPLACE FUNCTION fn_trg_bloquear_renglon_transferencia()
+CREATE OR REPLACE FUNCTION public.fn_trg_bloquear_renglon_transferencia()
 RETURNS TRIGGER
 LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
 AS $$
 DECLARE
-    v_numero_solicitud INTEGER;
-    v_estado estado_documento;
+    v_numeros INTEGER[];
+    v_numero INTEGER;
+    v_estado public.estado_documento;
 BEGIN
-    v_numero_solicitud := CASE
-        WHEN TG_OP = 'DELETE' THEN OLD.numero_solicitud
-        ELSE NEW.numero_solicitud
-    END;
-
-    SELECT estado
-    INTO v_estado
-    FROM transferencia
-    WHERE numero_solicitud = v_numero_solicitud;
-
-    IF NOT FOUND THEN
-        RAISE EXCEPTION
-            'No existe la transferencia asociada al renglón';
+    IF TG_OP = 'INSERT' THEN
+        v_numeros := ARRAY[NEW.numero_solicitud];
+    ELSIF TG_OP = 'DELETE' THEN
+        v_numeros := ARRAY[OLD.numero_solicitud];
+    ELSE
+        v_numeros := ARRAY[
+            OLD.numero_solicitud,
+            NEW.numero_solicitud
+        ];
     END IF;
 
-    IF v_estado <> 'en_confeccion' THEN
-        RAISE EXCEPTION
-            'RN-12: no se pueden modificar renglones de una transferencia que no está en confección';
+    FOR v_numero IN
+        SELECT DISTINCT u.numero
+        FROM unnest(v_numeros) AS u(numero)
+        ORDER BY u.numero
+    LOOP
+        SELECT t.estado
+        INTO v_estado
+        FROM public.transferencia AS t
+        WHERE t.numero_solicitud = v_numero
+        FOR UPDATE;
+
+        IF NOT FOUND THEN
+            RAISE EXCEPTION
+                'Transferencia % inexistente', v_numero
+                USING ERRCODE = '23503';
+        END IF;
+
+        IF v_estado <> 'en_confeccion' THEN
+            RAISE EXCEPTION
+                'RN-12: la transferencia % no admite cambios de renglones',
+                v_numero
+                USING ERRCODE = '23514';
+        END IF;
+    END LOOP;
+
+    IF TG_OP = 'DELETE' THEN
+        RETURN OLD;
     END IF;
 
-    RETURN CASE
-        WHEN TG_OP = 'DELETE' THEN OLD
-        ELSE NEW
-    END;
+    RETURN NEW;
 END;
 $$;
 
