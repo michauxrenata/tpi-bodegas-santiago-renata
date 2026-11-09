@@ -29,4 +29,7 @@
 \echo '=== Depuracion administrativa de ingresos ==='
 \ir ../database/tests/depuracion_ingresos.sql
 
+\echo '=== Proteccion de cabeceras ==='
+\ir ../database/tests/proteccion_cabeceras.sql
+
 \echo '=== Suite finalizada sin errores ==='

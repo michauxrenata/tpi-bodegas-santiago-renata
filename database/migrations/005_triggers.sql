@@ -605,3 +605,69 @@ EXECUTE FUNCTION public.fn_trg_validar_borrado_ingreso();
 
 REVOKE ALL ON FUNCTION public.fn_trg_validar_borrado_ingreso()
 FROM PUBLIC;
+-- Decision de diseno:
+-- los datos de cabecera quedan fijos al cerrar el documento.
+-- Los procedimientos pueden seguir actualizando solamente el estado.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_proteger_cabecera_documento()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
+AS $$
+BEGIN
+    IF OLD.estado <> 'en_confeccion'
+       OR NEW.estado <> 'en_confeccion' THEN
+
+        IF TG_TABLE_NAME = 'ingreso' THEN
+            IF ROW(
+                NEW.codigo_ingreso,
+                NEW.fecha,
+                NEW.codigo_transportista,
+                NEW.cuit_bodega
+            ) IS DISTINCT FROM ROW(
+                OLD.codigo_ingreso,
+                OLD.fecha,
+                OLD.codigo_transportista,
+                OLD.cuit_bodega
+            ) THEN
+                RAISE EXCEPTION
+                    'No se pueden modificar los datos de cabecera de un ingreso al cerrarlo o despues de cerrado'
+                    USING ERRCODE = '23514';
+            END IF;
+
+        ELSIF TG_TABLE_NAME = 'transferencia' THEN
+            IF ROW(
+                NEW.numero_solicitud,
+                NEW.id_sala,
+                NEW.fecha_confeccion
+            ) IS DISTINCT FROM ROW(
+                OLD.numero_solicitud,
+                OLD.id_sala,
+                OLD.fecha_confeccion
+            ) THEN
+                RAISE EXCEPTION
+                    'No se pueden modificar los datos de cabecera de una transferencia al cerrarla o despues de cerrada'
+                    USING ERRCODE = '23514';
+            END IF;
+        END IF;
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trg_proteger_cabecera_ingreso
+ON public.ingreso;
+
+CREATE TRIGGER trg_proteger_cabecera_ingreso
+BEFORE UPDATE ON public.ingreso
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_proteger_cabecera_documento();
+
+DROP TRIGGER IF EXISTS trg_proteger_cabecera_transferencia
+ON public.transferencia;
+
+CREATE TRIGGER trg_proteger_cabecera_transferencia
+BEFORE UPDATE ON public.transferencia
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_proteger_cabecera_documento();
