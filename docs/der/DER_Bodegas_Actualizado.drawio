@@ -1,0 +1,932 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Vista general" id="01_general">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="2883.6" pageHeight="851.6">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Vista general | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="2803.6" height="30" />
+        </mxCell>
+        <mxCell id="analisis_calidad" value="&lt;b&gt;analisis_calidad&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_analisis : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="41.27420000000001" y="584.9999200000001" width="153.9536" height="60.40016" />
+        </mxCell>
+        <mxCell id="auditoria_precio" value="&lt;b&gt;auditoria_precio&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_auditoria : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="819.5192" y="584.9999200000001" width="159.4616" height="60.40016" />
+        </mxCell>
+        <mxCell id="bodega" value="&lt;b&gt;bodega&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="598.9248" y="261.79992" width="116.65039999999999" height="60.40016" />
+        </mxCell>
+        <mxCell id="cepa" value="&lt;b&gt;cepa&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cepa : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="225.6884" y="112.79992" width="141.1232" height="60.40016" />
+        </mxCell>
+        <mxCell id="cliente" value="&lt;b&gt;cliente&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cliente : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1843.7676" y="423.39992" width="149.0648" height="60.40016" />
+        </mxCell>
+        <mxCell id="cliente_distribuidor" value="&lt;b&gt;cliente_distribuidor&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2331.2412000000004" y="584.9999200000001" width="152.11759999999998" height="60.40016" />
+        </mxCell>
+        <mxCell id="cliente_exportador" value="&lt;b&gt;cliente_exportador&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2143.2412000000004" y="584.9999200000001" width="152.11759999999998" height="60.40016" />
+        </mxCell>
+        <mxCell id="cliente_socio" value="&lt;b&gt;cliente_socio&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1523.2412" y="584.9999200000001" width="152.11759999999998" height="60.40016" />
+        </mxCell>
+        <mxCell id="composicion_vino" value="&lt;b&gt;composicion_vino&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;PK/FK id_cepa : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="231.4116" y="572.3992000000001" width="149.67680000000001" height="85.6016" />
+        </mxCell>
+        <mxCell id="comprobante" value="&lt;b&gt;comprobante&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK numero_comprobante : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1711.1964" y="584.9999200000001" width="210.2072" height="60.40016" />
+        </mxCell>
+        <mxCell id="empleado" value="&lt;b&gt;empleado&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2740.9748" y="584.9999200000001" width="116.65039999999999" height="60.40016" />
+        </mxCell>
+        <mxCell id="finca" value="&lt;b&gt;finca&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_finca : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="39.999" y="112.79992" width="140.504" height="60.40016" />
+        </mxCell>
+        <mxCell id="ingreso" value="&lt;b&gt;ingreso&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_ingreso : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="568.6524" y="423.39992" width="177.1952" height="60.40016" />
+        </mxCell>
+        <mxCell id="localidad" value="&lt;b&gt;localidad&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_postal : varchar(10)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2265.788" y="261.79992" width="179.024" height="60.40016" />
+        </mxCell>
+        <mxCell id="lote_uva" value="&lt;b&gt;lote_uva&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK nro_lote : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="70.081" y="423.39992" width="142.34" height="60.40016" />
+        </mxCell>
+        <mxCell id="maridaje" value="&lt;b&gt;maridaje&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_maridaje : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1338.5728" y="423.39992" width="159.4544" height="60.40016" />
+        </mxCell>
+        <mxCell id="parcela" value="&lt;b&gt;parcela&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_finca : integer&lt;br&gt;PK nro_parcela : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="67.93900000000001" y="249.1992" width="146.624" height="85.6016" />
+        </mxCell>
+        <mxCell id="permiso_exportacion" value="&lt;b&gt;permiso_exportacion&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_permiso : varchar(50)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2132.2432000000003" y="746.5999200000001" width="174.11360000000002" height="60.40016" />
+        </mxCell>
+        <mxCell id="renglon_comprobante" value="&lt;b&gt;renglon_comprobante&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK numero_comprobante : integer&lt;br&gt;PK/FK cod_vino : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1006.6664" y="733.9992000000001" width="213.2672" height="85.6016" />
+        </mxCell>
+        <mxCell id="renglon_ingreso" value="&lt;b&gt;renglon_ingreso&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK codigo_ingreso : integer&lt;br&gt;PK/FK cod_vino : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="417.12239999999997" y="572.3992000000001" width="180.2552" height="85.6016" />
+        </mxCell>
+        <mxCell id="renglon_transferencia" value="&lt;b&gt;renglon_transferencia&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK numero_solicitud : integer&lt;br&gt;PK/FK cod_vino : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1581.8991999999998" y="733.9992000000001" width="188.8016" height="85.6016" />
+        </mxCell>
+        <mxCell id="sala_venta" value="&lt;b&gt;sala_venta&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_sala : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2414.578" y="423.39992" width="137.444" height="60.40016" />
+        </mxCell>
+        <mxCell id="stock_deposito" value="&lt;b&gt;stock_deposito&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="633.4116" y="584.9999200000001" width="149.67680000000001" height="60.40016" />
+        </mxCell>
+        <mxCell id="stock_sala" value="&lt;b&gt;stock_sala&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_sala : integer&lt;br&gt;PK/FK cod_vino : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1957.4615999999999" y="572.3992000000001" width="149.67680000000001" height="85.6016" />
+        </mxCell>
+        <mxCell id="transferencia" value="&lt;b&gt;transferencia&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK numero_solicitud : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2519.4292" y="584.9999200000001" width="185.7416" height="60.40016" />
+        </mxCell>
+        <mxCell id="transportista" value="&lt;b&gt;transportista&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_transportista : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1763.4768" y="261.79992" width="201.6464" height="60.40016" />
+        </mxCell>
+        <mxCell id="transportista_cobertura" value="&lt;b&gt;transportista_cobertura&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK codigo_transportista : integer&lt;br&gt;PK/FK codigo_postal : varchar(10)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="2125.9468" y="410.79920000000004" width="204.70639999999997" height="85.6016" />
+        </mxCell>
+        <mxCell id="vino" value="&lt;b&gt;vino&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_vino : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="825.938" y="423.39992" width="146.624" height="60.40016" />
+        </mxCell>
+        <mxCell id="vino_maridaje" value="&lt;b&gt;vino_maridaje&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;PK/FK id_maridaje : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="1325.0464" y="572.3992000000001" width="162.5072" height="85.6016" />
+        </mxCell>
+        <mxCell id="edge0" value="F01  1 : 0..N" edge="1" parent="1" source="lote_uva" target="analisis_calidad" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="126.686" y="503.1" />
+              <mxPoint x="120.276" y="547.58" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F02  1 : 0..N" edge="1" parent="1" source="vino" target="auditoria_precio" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="892.25" y="503.1" />
+              <mxPoint x="892.25" y="547.58" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F03  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_distribuidor" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2033.4" y="474.90000000000003" />
+              <mxPoint x="2101.3" y="488.40000000000003" />
+              <mxPoint x="2101.3" y="488.40000000000003" />
+              <mxPoint x="2101.3" y="488.40000000000003" />
+              <mxPoint x="2314.3" y="524.4000000000001" />
+              <mxPoint x="2314.3" y="524.4000000000001" />
+              <mxPoint x="2314.3" y="524.4000000000001" />
+              <mxPoint x="2347.8" y="557.85" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F04  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_exportador" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2009.1" y="497.17" />
+              <mxPoint x="2066.3" y="524.4000000000001" />
+              <mxPoint x="2066.3" y="524.4000000000001" />
+              <mxPoint x="2066.3" y="524.4000000000001" />
+              <mxPoint x="2124.0" y="558.32" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="F05  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_socio" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1802.2" y="505.14000000000004" />
+              <mxPoint x="1705.2" y="553.6700000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="F06  1 : 0..N" edge="1" parent="1" source="vino" target="composicion_vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="792.06" y="478.65000000000003" />
+              <mxPoint x="757.25" y="488.40000000000003" />
+              <mxPoint x="757.25" y="488.40000000000003" />
+              <mxPoint x="757.25" y="488.40000000000003" />
+              <mxPoint x="426.23" y="524.4000000000001" />
+              <mxPoint x="426.23" y="524.4000000000001" />
+              <mxPoint x="426.23" y="524.4000000000001" />
+              <mxPoint x="393.29" y="546.6600000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" value="F07  1 : 0..N" edge="1" parent="1" source="cepa" target="composicion_vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="291.39" y="240.54000000000008" />
+              <mxPoint x="296.22" y="467.79" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="F08  1 : 0..N" edge="1" parent="1" source="cliente" target="comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1877.5" y="503.45000000000005" />
+              <mxPoint x="1848.5" y="548.71" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" value="F09  1 : 0..N" edge="1" parent="1" source="sala_venta" target="comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2379.1" y="477.81" />
+              <mxPoint x="2341.3" y="488.40000000000003" />
+              <mxPoint x="2341.3" y="488.40000000000003" />
+              <mxPoint x="2341.3" y="488.40000000000003" />
+              <mxPoint x="2149.3" y="536.4000000000001" />
+              <mxPoint x="2149.3" y="536.4000000000001" />
+              <mxPoint x="2149.3" y="536.4000000000001" />
+              <mxPoint x="1932.3" y="572.4000000000001" />
+              <mxPoint x="1932.3" y="572.4000000000001" />
+              <mxPoint x="1932.3" y="572.4000000000001" />
+              <mxPoint x="1917.4" y="576.97" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" value="F10  1 : 0..N" edge="1" parent="1" source="sala_venta" target="empleado" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2583.1" y="504.55" />
+              <mxPoint x="2676.5" y="551.75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="F11  1 : 0..N" edge="1" parent="1" source="transportista" target="ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1505.1" y="329.62" />
+              <mxPoint x="801.25" y="410.8" />
+              <mxPoint x="801.25" y="410.8" />
+              <mxPoint x="801.25" y="410.8" />
+              <mxPoint x="771.61" y="418.22" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="F12  1 : 0..N" edge="1" parent="1" source="bodega" target="ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650.25" y="341.5" />
+              <mxPoint x="650.25" y="385.98" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge12" value="F13  1 : 0..N" edge="1" parent="1" source="bodega" target="lote_uva" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="506.81" y="333.37" />
+              <mxPoint x="310.77" y="394.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge13" value="F14  1 : 0..N" edge="1" parent="1" source="parcela" target="lote_uva" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="134.251" y="353.76000000000005" />
+              <mxPoint x="134.251" y="390.44" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="F15  1 : 0..N" edge="1" parent="1" source="cepa" target="parcela" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="232.5" y="181.84000000000003" />
+              <mxPoint x="206.23" y="201.20000000000005" />
+              <mxPoint x="206.23" y="201.20000000000005" />
+              <mxPoint x="206.23" y="201.20000000000005" />
+              <mxPoint x="188.19" y="222.70000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="F16  1 : 0..N" edge="1" parent="1" source="finca" target="parcela" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="98.45" y="181.84000000000003" />
+              <mxPoint x="96.227" y="201.20000000000005" />
+              <mxPoint x="96.227" y="201.20000000000005" />
+              <mxPoint x="96.227" y="201.20000000000005" />
+              <mxPoint x="96.227" y="213.20000000000005" />
+              <mxPoint x="96.227" y="213.20000000000005" />
+              <mxPoint x="96.227" y="213.20000000000005" />
+              <mxPoint x="103.406" y="227.13" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge16" value="F17  1 : 0..N" edge="1" parent="1" source="cliente_exportador" target="permiso_exportacion" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2212.3" y="664.7" />
+              <mxPoint x="2212.3" y="709.1800000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge17" value="F18  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="934.37" y="497.0" />
+              <mxPoint x="959.25" y="524.4000000000001" />
+              <mxPoint x="959.25" y="524.4000000000001" />
+              <mxPoint x="959.25" y="524.4000000000001" />
+              <mxPoint x="990.25" y="572.4000000000001" />
+              <mxPoint x="990.25" y="572.4000000000001" />
+              <mxPoint x="990.25" y="572.4000000000001" />
+              <mxPoint x="1046.6" y="669.34" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge18" value="F19  1 : 0..N" edge="1" parent="1" source="comprobante" target="renglon_comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1704.8" y="644.29" />
+              <mxPoint x="1686.3" y="650.0" />
+              <mxPoint x="1686.3" y="650.0" />
+              <mxPoint x="1686.3" y="650.0" />
+              <mxPoint x="1379.9" y="714.3290000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge19" value="F20  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="765.79" y="502.09000000000003" />
+              <mxPoint x="663.3" y="543.81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge20" value="F21  1 : 0..N" edge="1" parent="1" source="ingreso" target="renglon_ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="551.1600000000001" y="497.17" />
+              <mxPoint x="493.23" y="524.4000000000001" />
+              <mxPoint x="493.23" y="524.4000000000001" />
+              <mxPoint x="493.23" y="524.4000000000001" />
+              <mxPoint x="493.23" y="536.4000000000001" />
+              <mxPoint x="493.23" y="536.4000000000001" />
+              <mxPoint x="493.23" y="536.4000000000001" />
+              <mxPoint x="494.51" y="549.84" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge21" value="F22  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1031.4" y="529.21" />
+              <mxPoint x="1245.2" y="650.0" />
+              <mxPoint x="1245.2" y="650.0" />
+              <mxPoint x="1245.2" y="650.0" />
+              <mxPoint x="1450.0" y="708.8100000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge22" value="F23  1 : 0..N" edge="1" parent="1" source="transferencia" target="renglon_transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2511.0" y="644.29" />
+              <mxPoint x="2494.3" y="650.0" />
+              <mxPoint x="2494.3" y="650.0" />
+              <mxPoint x="2494.3" y="650.0" />
+              <mxPoint x="2279.3" y="698.0" />
+              <mxPoint x="2279.3" y="698.0" />
+              <mxPoint x="2279.3" y="698.0" />
+              <mxPoint x="1935.3" y="739.616" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge23" value="F24  1 : 0..N" edge="1" parent="1" source="localidad" target="sala_venta" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2390.8" y="342.08000000000004" />
+              <mxPoint x="2427.5" y="387.87" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge24" value="F25  1 : 0..1" edge="1" parent="1" source="vino" target="stock_deposito" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="827.47" y="504.73" />
+              <mxPoint x="769.81" y="552.9200000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge25" value="F26  1 : 0..N" edge="1" parent="1" source="vino" target="stock_sala" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1077.1" y="467.19" />
+              <mxPoint x="1313.3" y="488.40000000000003" />
+              <mxPoint x="1313.3" y="488.40000000000003" />
+              <mxPoint x="1313.3" y="488.40000000000003" />
+              <mxPoint x="1930.3" y="524.4000000000001" />
+              <mxPoint x="1930.3" y="524.4000000000001" />
+              <mxPoint x="1930.3" y="524.4000000000001" />
+              <mxPoint x="1954.3" y="546.11" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge26" value="F27  1 : 0..N" edge="1" parent="1" source="sala_venta" target="stock_sala" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2444.7" y="500.76000000000005" />
+              <mxPoint x="2422.3" y="536.4000000000001" />
+              <mxPoint x="2422.3" y="536.4000000000001" />
+              <mxPoint x="2422.3" y="536.4000000000001" />
+              <mxPoint x="2118.3" y="572.4000000000001" />
+              <mxPoint x="2118.3" y="572.4000000000001" />
+              <mxPoint x="2118.3" y="572.4000000000001" />
+              <mxPoint x="2110.6" y="575.52" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge27" value="F28  1 : 0..N" edge="1" parent="1" source="sala_venta" target="transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2519.2" y="503.68" />
+              <mxPoint x="2556.2" y="549.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge28" value="F29  1 : 0..N" edge="1" parent="1" source="localidad" target="transportista_cobertura" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2309.0" y="338.35" />
+              <mxPoint x="2279.0" y="376.03000000000003" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge29" value="F30  1 : 0..N" edge="1" parent="1" source="transportista" target="transportista_cobertura" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1971.9" y="339.29" />
+              <mxPoint x="2061.3" y="378.45000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge30" value="F31  1 : 0..N" edge="1" parent="1" source="bodega" target="vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="731.77" y="342.76000000000005" />
+              <mxPoint x="802.68" y="389.53000000000003" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge31" value="F32  1 : 0..N" edge="1" parent="1" source="vino" target="vino_maridaje" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1060.9" y="485.65000000000003" />
+              <mxPoint x="1247.3" y="524.4000000000001" />
+              <mxPoint x="1247.3" y="524.4000000000001" />
+              <mxPoint x="1247.3" y="524.4000000000001" />
+              <mxPoint x="1287.3" y="547.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge32" value="F33  1 : 0..N" edge="1" parent="1" source="maridaje" target="vino_maridaje" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1407.6" y="499.54" />
+              <mxPoint x="1404.8" y="536.38" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Territorio y transporte" id="02_territorio">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="780.36" pageHeight="805.6">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Territorio y transporte | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="700.36" height="30" />
+        </mxCell>
+        <mxCell id="empleado" value="&lt;b&gt;empleado&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom&lt;br&gt;nombre : varchar(150)&lt;br&gt;fecha_ingreso : date&lt;br&gt;salario : numeric(12,2)&lt;br&gt;FK id_sala : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="209.7452" y="612.3992" width="137.4296" height="161.2016" />
+        </mxCell>
+        <mxCell id="localidad" value="&lt;b&gt;localidad&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_postal : varchar(10)&lt;br&gt;nombre : varchar(100)&lt;br&gt;provincia : varchar(100)&lt;br&gt;encargado_regional : varchar(150)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="180.074" y="137.9992" width="196.772" height="136.0016" />
+        </mxCell>
+        <mxCell id="sala_venta" value="&lt;b&gt;sala_venta&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_sala : integer ID&lt;br&gt;calle : varchar(100)&lt;br&gt;numero : varchar(20)&lt;br&gt;dia_cierre : varchar(15)&lt;br&gt;FK codigo_postal : varchar(10)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="189.25760000000002" y="375.1992" width="178.4048" height="161.2016" />
+        </mxCell>
+        <mxCell id="transportista" value="&lt;b&gt;transportista&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_transportista : integer ID&lt;br&gt;razon_social : varchar(150)&lt;br&gt;cuit : cuit_dom&lt;br&gt;email : varchar(100)&lt;br&gt;telefono : varchar(30)&lt;br&gt;domicilio : varchar(200)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="412.6368" y="112.79920000000001" width="201.6464" height="186.40159999999997" />
+        </mxCell>
+        <mxCell id="transportista_cobertura" value="&lt;b&gt;transportista_cobertura&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK codigo_transportista : integer&lt;br&gt;PK/FK codigo_postal : varchar(10)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="408.1068" y="412.99920000000003" width="204.70639999999997" height="85.6016" />
+        </mxCell>
+        <mxCell id="edge0" value="F10  1 : 0..N" edge="1" parent="1" source="sala_venta" target="empleado" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="271.46000000000004" y="552.77" />
+              <mxPoint x="271.46000000000004" y="580.19" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F24  1 : 0..N" edge="1" parent="1" source="localidad" target="sala_venta" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="271.46000000000004" y="296.91" />
+              <mxPoint x="271.46000000000004" y="334.79" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F29  1 : 0..N" edge="1" parent="1" source="localidad" target="transportista_cobertura" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="371.93" y="310.31" />
+              <mxPoint x="426.65" y="368.75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F30  1 : 0..N" edge="1" parent="1" source="transportista" target="transportista_cobertura" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="504.92" y="329.99" />
+              <mxPoint x="504.39" y="374.08000000000004" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Produccion y calidad" id="03_produccion">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="780.36" pageHeight="1093.2">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Produccion y calidad | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="700.36" height="30" />
+        </mxCell>
+        <mxCell id="analisis_calidad" value="&lt;b&gt;analisis_calidad&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_analisis : integer ID&lt;br&gt;FK nro_lote : integer&lt;br&gt;fecha : date&lt;br&gt;grado_brix : numeric(4,2)&lt;br&gt;ph : numeric(3,2)&lt;br&gt;acidez_total : numeric(5,2)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="224.84079999999997" y="874.7992" width="157.6184" height="186.40159999999997" />
+        </mxCell>
+        <mxCell id="bodega" value="&lt;b&gt;bodega&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom&lt;br&gt;razon_social : varchar(150)&lt;br&gt;domicilio : varchar(200)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="168.0084" y="375.1992" width="161.2832" height="110.8016" />
+        </mxCell>
+        <mxCell id="cepa" value="&lt;b&gt;cepa [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cepa : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="282.0884" y="163.19992000000008" width="141.1232" height="60.40016" />
+        </mxCell>
+        <mxCell id="finca" value="&lt;b&gt;finca&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_finca : integer ID&lt;br&gt;nombre : varchar(100)&lt;br&gt;superficie_ha : numeric(8,2)&lt;br&gt;departamento : varchar(100)&lt;br&gt;provincia : varchar(100)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="458.9484" y="112.79920000000008" width="167.4032" height="161.2016" />
+        </mxCell>
+        <mxCell id="lote_uva" value="&lt;b&gt;lote_uva&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK nro_lote : integer ID&lt;br&gt;FK id_finca : integer&lt;br&gt;FK nro_parcela : integer&lt;br&gt;campana : smallint&lt;br&gt;fecha_cosecha : date&lt;br&gt;kg_cosechados : numeric(10,2)&lt;br&gt;FK cuit_bodega_destino : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="203.42799999999997" y="587.1992" width="200.44400000000002" height="211.6016" />
+        </mxCell>
+        <mxCell id="parcela" value="&lt;b&gt;parcela&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_finca : integer&lt;br&gt;PK nro_parcela : integer&lt;br&gt;superficie_ha : numeric(8,2)&lt;br&gt;anio_plantacion : smallint&lt;br&gt;FK id_cepa : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="365.47839999999997" y="349.99920000000003" width="164.3432" height="161.2016" />
+        </mxCell>
+        <mxCell id="edge0" value="F01  1 : 0..N" edge="1" parent="1" source="lote_uva" target="analisis_calidad" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="296.65" y="815.6800000000001" />
+              <mxPoint x="296.65" y="842.62" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F13  1 : 0..N" edge="1" parent="1" source="bodega" target="lote_uva" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="258.4" y="506.9000000000001" />
+              <mxPoint x="266.38" y="544.7" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F14  1 : 0..N" edge="1" parent="1" source="parcela" target="lote_uva" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="385.46" y="527.3900000000001" />
+              <mxPoint x="370.18" y="555.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F15  1 : 0..N" edge="1" parent="1" source="cepa" target="parcela" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="368.06" y="245.8900000000001" />
+              <mxPoint x="389.26" y="298.36" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="F16  1 : 0..N" edge="1" parent="1" source="finca" target="parcela" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="495.19" y="290.58000000000004" />
+              <mxPoint x="484.01" y="318.26" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Vinos y composicion" id="04_vinos">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="736.01" pageHeight="780.4">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Vinos y composicion | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="656.01" height="30" />
+        </mxCell>
+        <mxCell id="auditoria_precio" value="&lt;b&gt;auditoria_precio&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_auditoria : integer ID&lt;br&gt;FK cod_vino : integer&lt;br&gt;precio_anterior : numeric(10,2)&lt;br&gt;precio_nuevo : numeric(10,2)&lt;br&gt;fecha_hora : timestamp&lt;br&gt;usuario : varchar(100)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="261.4076" y="561.9992" width="178.4048" height="186.40159999999997" />
+        </mxCell>
+        <mxCell id="bodega" value="&lt;b&gt;bodega [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="289.2848" y="112.79992" width="116.65039999999999" height="60.40016" />
+        </mxCell>
+        <mxCell id="cepa" value="&lt;b&gt;cepa&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cepa : integer ID&lt;br&gt;nombre : varchar(100)&lt;br&gt;tipo : tipo_cepa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="60.049400000000006" y="312.19919999999996" width="141.1232" height="110.8016" />
+        </mxCell>
+        <mxCell id="composicion_vino" value="&lt;b&gt;composicion_vino&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;PK/FK id_cepa : integer&lt;br&gt;porcentaje : numeric(5,2)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="65.4702" y="599.7991999999999" width="150.2816" height="110.8016" />
+        </mxCell>
+        <mxCell id="maridaje" value="&lt;b&gt;maridaje&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_maridaje : integer ID&lt;br&gt;nombre : varchar(100)&lt;br&gt;temp_servicio_sugerida_c : numeric(4,1)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="463.2624" y="312.19919999999996" width="226.6952" height="110.8016" />
+        </mxCell>
+        <mxCell id="vino" value="&lt;b&gt;vino&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_vino : integer ID&lt;br&gt;nombre : varchar(100)&lt;br&gt;tipo : tipo_vino&lt;br&gt;anada : smallint&lt;br&gt;volumen_ml : integer&lt;br&gt;graduacion : numeric(4,2)&lt;br&gt;precio : numeric(10,2)&lt;br&gt;FK cuit_bodega : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="268.1816" y="249.19919999999996" width="158.8568" height="236.8016" />
+        </mxCell>
+        <mxCell id="vino_maridaje" value="&lt;b&gt;vino_maridaje&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;PK/FK id_maridaje : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="482.3564" y="612.3992" width="162.5072" height="85.6016" />
+        </mxCell>
+        <mxCell id="edge0" value="F02  1 : 0..N" edge="1" parent="1" source="vino" target="auditoria_precio" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="340.59" y="498.66999999999996" />
+              <mxPoint x="340.59" y="514.0" />
+              <mxPoint x="340.59" y="514.0" />
+              <mxPoint x="340.59" y="514.0" />
+              <mxPoint x="340.59" y="526.0" />
+              <mxPoint x="340.59" y="526.0" />
+              <mxPoint x="340.59" y="526.0" />
+              <mxPoint x="340.88" y="538.15" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F06  1 : 0..N" edge="1" parent="1" source="vino" target="composicion_vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="236.67" y="508.01" />
+              <mxPoint x="200.88" y="557.38" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F07  1 : 0..N" edge="1" parent="1" source="cepa" target="composicion_vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="119.212" y="458.16999999999996" />
+              <mxPoint x="116.587" y="514.0" />
+              <mxPoint x="116.587" y="514.0" />
+              <mxPoint x="116.587" y="514.0" />
+              <mxPoint x="116.587" y="526.0" />
+              <mxPoint x="116.587" y="526.0" />
+              <mxPoint x="116.587" y="526.0" />
+              <mxPoint x="121.275" y="560.2" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F31  1 : 0..N" edge="1" parent="1" source="bodega" target="vino" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="340.61" y="184.43999999999994" />
+              <mxPoint x="340.61" y="212.73000000000002" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="F32  1 : 0..N" edge="1" parent="1" source="vino" target="vino_maridaje" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="450.48" y="509.87" />
+              <mxPoint x="494.65" y="568.28" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="F33  1 : 0..N" edge="1" parent="1" source="maridaje" target="vino_maridaje" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="564.88" y="468.5" />
+              <mxPoint x="561.02" y="553.29" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Clientes y permisos" id="05_clientes">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="736.01" pageHeight="805.6">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Clientes y permisos | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="656.01" height="30" />
+        </mxCell>
+        <mxCell id="note" value="TOTAL y DISJUNTA: exactamente uno de los tres subtipos por cliente." vertex="1" parent="1" style="text;html=0;fontSize=12;align=center;">
+          <mxGeometry as="geometry" x="40" y="50" width="656.01" height="25" />
+        </mxCell>
+        <mxCell id="cliente" value="&lt;b&gt;cliente&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cliente : integer ID&lt;br&gt;nombre_razon_social : varchar(150)&lt;br&gt;tipo_doc : varchar(20)&lt;br&gt;nro_doc : varchar(30)&lt;br&gt;direccion : varchar(200)&lt;br&gt;localidad : varchar(100)&lt;br&gt;fecha_alta : date&lt;br&gt;tipo_cliente : tipo_cliente_enum&lt;br&gt;descuento : numeric(4,2)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="284.6204" y="112.79920000000007" width="204.69920000000002" height="262.0016" />
+        </mxCell>
+        <mxCell id="cliente_distribuidor" value="&lt;b&gt;cliente_distribuidor&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer&lt;br&gt;zona_cobertura : varchar(150)&lt;br&gt;nro_habilitacion : varchar(50)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="70.9844" y="450.79920000000004" width="175.9712" height="110.8016" />
+        </mxCell>
+        <mxCell id="cliente_exportador" value="&lt;b&gt;cliente_exportador&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer&lt;br&gt;pais_destino_principal : varchar(100)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="282.7808" y="463.39920000000006" width="208.3784" height="85.6016" />
+        </mxCell>
+        <mxCell id="cliente_socio" value="&lt;b&gt;cliente_socio&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_cliente : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="526.9112" y="475.99992000000003" width="152.11759999999998" height="60.40016" />
+        </mxCell>
+        <mxCell id="permiso_exportacion" value="&lt;b&gt;permiso_exportacion&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_permiso : varchar(50)&lt;br&gt;FK id_cliente_exportador : integer&lt;br&gt;fecha_emision : date&lt;br&gt;fecha_vencimiento : date" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="290.42" y="637.5992" width="193.1" height="136.0016" />
+        </mxCell>
+        <mxCell id="edge0" value="F03  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_distribuidor" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="254.86" y="383.69" />
+              <mxPoint x="222.98" y="420.1" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F04  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_exportador" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="379.97" y="400.28000000000003" />
+              <mxPoint x="379.97" y="434.55" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F05  1 : 0..1" edge="1" parent="1" source="cliente" target="cliente_socio" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="511.21" y="399.02000000000004" />
+              <mxPoint x="549.36" y="445.01000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F17  1 : 0..N" edge="1" parent="1" source="cliente_exportador" target="permiso_exportacion" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="379.97" y="566.1700000000001" />
+              <mxPoint x="379.97" y="600.4200000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Ingresos y transferencias" id="06_movimientos">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="780.36" pageHeight="629.2">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Ingresos y transferencias | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="700.36" height="30" />
+        </mxCell>
+        <mxCell id="bodega" value="&lt;b&gt;bodega [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cuit : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="623.6248" y="112.79992000000006" width="116.65039999999999" height="60.40016" />
+        </mxCell>
+        <mxCell id="ingreso" value="&lt;b&gt;ingreso&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_ingreso : integer ID&lt;br&gt;fecha : date&lt;br&gt;estado : estado_documento&lt;br&gt;FK codigo_transportista : integer&lt;br&gt;FK cuit_bodega : cuit_dom" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="491.46360000000004" y="249.19920000000008" width="186.9728" height="161.2016" />
+        </mxCell>
+        <mxCell id="renglon_ingreso" value="&lt;b&gt;renglon_ingreso&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK codigo_ingreso : integer&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;cantidad : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="485.8224" y="486.39920000000006" width="180.2552" height="110.8016" />
+        </mxCell>
+        <mxCell id="renglon_transferencia" value="&lt;b&gt;renglon_transferencia&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK numero_solicitud : integer&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;cantidad : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="60.5492" y="486.39920000000006" width="188.8016" height="110.8016" />
+        </mxCell>
+        <mxCell id="sala_venta" value="&lt;b&gt;sala_venta [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_sala : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="78.232" y="112.79992000000006" width="137.444" height="60.40016" />
+        </mxCell>
+        <mxCell id="stock_deposito" value="&lt;b&gt;stock_deposito&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;cantidad : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="292.11159999999995" y="498.9992000000001" width="149.67680000000001" height="85.6016" />
+        </mxCell>
+        <mxCell id="transferencia" value="&lt;b&gt;transferencia&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK numero_solicitud : integer ID&lt;br&gt;FK id_sala : integer&lt;br&gt;fecha_confeccion : date&lt;br&gt;estado : estado_documento" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="54.08319999999999" y="261.79920000000004" width="185.7416" height="136.0016" />
+        </mxCell>
+        <mxCell id="transportista" value="&lt;b&gt;transportista [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK codigo_transportista : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="386.1268" y="112.79992000000006" width="201.6464" height="60.40016" />
+        </mxCell>
+        <mxCell id="vino" value="&lt;b&gt;vino [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_vino : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="293.638" y="299.59992000000005" width="146.624" height="60.40016" />
+        </mxCell>
+        <mxCell id="edge0" value="F11  1 : 0..N" edge="1" parent="1" source="transportista" target="ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="503.86" y="185.07000000000005" />
+              <mxPoint x="519.53" y="214.64000000000004" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F12  1 : 0..N" edge="1" parent="1" source="bodega" target="ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="651.29" y="185.07000000000005" />
+              <mxPoint x="635.78" y="214.64000000000004" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F20  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="416.44" y="383.56000000000006" />
+              <mxPoint x="472.21" y="439.59000000000003" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F21  1 : 0..N" edge="1" parent="1" source="ingreso" target="renglon_ingreso" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="573.63" y="427.68000000000006" />
+              <mxPoint x="572.44" y="455.5400000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="F22  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="302.66" y="383.56000000000006" />
+              <mxPoint x="246.09" y="439.59000000000003" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="F23  1 : 0..N" edge="1" parent="1" source="transferencia" target="renglon_transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="134.39600000000002" y="415.09000000000003" />
+              <mxPoint x="132.929" y="438.40000000000003" />
+              <mxPoint x="132.929" y="438.40000000000003" />
+              <mxPoint x="132.929" y="438.40000000000003" />
+              <mxPoint x="132.929" y="450.40000000000003" />
+              <mxPoint x="132.929" y="450.40000000000003" />
+              <mxPoint x="132.929" y="450.40000000000003" />
+              <mxPoint x="135.20999999999998" y="463.52000000000004" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" value="F25  1 : 0..1" edge="1" parent="1" source="vino" target="stock_deposito" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="356.13" y="384.75000000000006" />
+              <mxPoint x="352.59" y="438.40000000000003" />
+              <mxPoint x="352.59" y="438.40000000000003" />
+              <mxPoint x="352.59" y="438.40000000000003" />
+              <mxPoint x="352.59" y="450.40000000000003" />
+              <mxPoint x="352.59" y="450.40000000000003" />
+              <mxPoint x="352.59" y="450.40000000000003" />
+              <mxPoint x="354.56" y="473.5400000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="F28  1 : 0..N" edge="1" parent="1" source="sala_venta" target="transferencia" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="139.954" y="188.00000000000006" />
+              <mxPoint x="139.954" y="223.44000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Ventas y stock en sala" id="07_ventas">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="780.36" pageHeight="755.2">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Ventas y stock en sala | Bodegas del Atuel | 2c8a252" vertex="1" parent="1" style="text;html=0;fontSize=18;fontStyle=1;align=center;">
+          <mxGeometry as="geometry" x="40" y="20" width="700.36" height="30" />
+        </mxCell>
+        <mxCell id="cliente" value="&lt;b&gt;cliente [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_cliente : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="125.2576" y="112.79992" width="149.0648" height="60.40016" />
+        </mxCell>
+        <mxCell id="comprobante" value="&lt;b&gt;comprobante&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK numero_comprobante : integer ID&lt;br&gt;fecha : timestamp&lt;br&gt;FK id_cliente : integer&lt;br&gt;FK id_sala : integer&lt;br&gt;subtotal : numeric(12,2)&lt;br&gt;descuento : numeric(12,2)&lt;br&gt;total : numeric(12,2)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="126.68639999999999" y="249.19920000000008" width="210.2072" height="211.6016" />
+        </mxCell>
+        <mxCell id="renglon_comprobante" value="&lt;b&gt;renglon_comprobante&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK numero_comprobante : integer&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;cantidad : integer&lt;br&gt;precio_unitario : numeric(10,2)&lt;br&gt;descuento : numeric(10,2)&lt;br&gt;subtotal : numeric(12,2)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="317.1564" y="536.7992" width="213.2672" height="186.40159999999997" />
+        </mxCell>
+        <mxCell id="sala_venta" value="&lt;b&gt;sala_venta [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK id_sala : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="330.06800000000004" y="112.79992" width="137.444" height="60.40016" />
+        </mxCell>
+        <mxCell id="stock_sala" value="&lt;b&gt;stock_sala&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK/FK id_sala : integer&lt;br&gt;PK/FK cod_vino : integer&lt;br&gt;cantidad : integer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="372.9516" y="299.59920000000005" width="149.67680000000001" height="110.8016" />
+        </mxCell>
+        <mxCell id="vino" value="&lt;b&gt;vino [ref.]&lt;/b&gt;&lt;br&gt;&lt;br&gt;PK cod_vino : integer ID" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontFamily=Arial;fontSize=11;fillColor=#f8fafc;strokeColor=#64748b;">
+          <mxGeometry as="geometry" x="522.478" y="112.79992" width="146.624" height="60.40016" />
+        </mxCell>
+        <mxCell id="edge0" value="F08  1 : 0..N" edge="1" parent="1" source="cliente" target="comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="187.99" y="181.84000000000003" />
+              <mxPoint x="185.77" y="201.20000000000005" />
+              <mxPoint x="185.77" y="201.20000000000005" />
+              <mxPoint x="185.77" y="201.20000000000005" />
+              <mxPoint x="185.77" y="213.20000000000005" />
+              <mxPoint x="185.77" y="213.20000000000005" />
+              <mxPoint x="185.77" y="213.20000000000005" />
+              <mxPoint x="189.24" y="225.37000000000006" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1" value="F09  1 : 0..N" edge="1" parent="1" source="sala_venta" target="comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="354.18" y="181.84000000000003" />
+              <mxPoint x="336.77" y="201.20000000000005" />
+              <mxPoint x="336.77" y="201.20000000000005" />
+              <mxPoint x="336.77" y="201.20000000000005" />
+              <mxPoint x="322.85" y="219.70000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="F18  1 : 0..N" edge="1" parent="1" source="vino" target="renglon_comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="582.46" y="186.37" />
+              <mxPoint x="578.79" y="213.20000000000005" />
+              <mxPoint x="578.79" y="213.20000000000005" />
+              <mxPoint x="578.79" y="213.20000000000005" />
+              <mxPoint x="533.79" y="452.80000000000007" />
+              <mxPoint x="533.79" y="452.80000000000007" />
+              <mxPoint x="533.79" y="452.80000000000007" />
+              <mxPoint x="508.04" y="490.70000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="F19  1 : 0..N" edge="1" parent="1" source="comprobante" target="renglon_comprobante" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="313.48" y="478.11" />
+              <mxPoint x="332.78" y="505.55000000000007" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="F26  1 : 0..N" edge="1" parent="1" source="vino" target="stock_sala" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="538.87" y="181.84000000000003" />
+              <mxPoint x="515.77" y="201.20000000000005" />
+              <mxPoint x="515.77" y="201.20000000000005" />
+              <mxPoint x="515.77" y="201.20000000000005" />
+              <mxPoint x="490.58" y="251.19000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="F27  1 : 0..N" edge="1" parent="1" source="sala_venta" target="stock_sala" style="edgeStyle=none;html=0;endArrow=classic;strokeColor=#64748b;fontSize=10;labelBackgroundColor=#ffffff;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="400.64" y="186.37" />
+              <mxPoint x="405.77" y="213.20000000000005" />
+              <mxPoint x="405.77" y="213.20000000000005" />
+              <mxPoint x="405.77" y="213.20000000000005" />
+              <mxPoint x="416.57" y="255.38000000000005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
