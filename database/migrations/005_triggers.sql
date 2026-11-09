@@ -671,3 +671,121 @@ CREATE TRIGGER trg_proteger_cabecera_transferencia
 BEFORE UPDATE ON public.transferencia
 FOR EACH ROW
 EXECUTE FUNCTION public.fn_trg_proteger_cabecera_documento();
+-- Jerarquia de clientes:
+-- cada cliente debe tener exactamente el subtipo declarado.
+-- Validacion diferida para permitir altas y cambios en varios pasos.
+
+CREATE OR REPLACE FUNCTION public.fn_trg_validar_subtipo_cliente()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, pg_temp
+AS $$
+DECLARE
+    v_ids INTEGER[];
+    v_id INTEGER;
+    v_tipo public.tipo_cliente_enum;
+    v_socio BOOLEAN;
+    v_distribuidor BOOLEAN;
+    v_exportador BOOLEAN;
+    v_cantidad INTEGER;
+    v_coincide BOOLEAN;
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        v_ids := ARRAY[NEW.id_cliente];
+    ELSIF TG_OP = 'DELETE' THEN
+        v_ids := ARRAY[OLD.id_cliente];
+    ELSE
+        v_ids := ARRAY[OLD.id_cliente, NEW.id_cliente];
+    END IF;
+
+    FOR v_id IN
+        SELECT DISTINCT u.id
+        FROM unnest(v_ids) AS u(id)
+        WHERE u.id IS NOT NULL
+        ORDER BY u.id
+    LOOP
+        SELECT c.tipo_cliente
+        INTO v_tipo
+        FROM public.cliente AS c
+        WHERE c.id_cliente = v_id;
+
+        -- Si se elimino el cliente, admitir la cascada de sus subtipos.
+        IF NOT FOUND THEN
+            CONTINUE;
+        END IF;
+
+        SELECT
+            EXISTS (
+                SELECT 1 FROM public.cliente_socio
+                WHERE id_cliente = v_id
+            ),
+            EXISTS (
+                SELECT 1 FROM public.cliente_distribuidor
+                WHERE id_cliente = v_id
+            ),
+            EXISTS (
+                SELECT 1 FROM public.cliente_exportador
+                WHERE id_cliente = v_id
+            )
+        INTO v_socio, v_distribuidor, v_exportador;
+
+        v_cantidad := v_socio::INTEGER
+                    + v_distribuidor::INTEGER
+                    + v_exportador::INTEGER;
+
+        v_coincide := CASE v_tipo
+            WHEN 'socio' THEN v_socio
+            WHEN 'distribuidor' THEN v_distribuidor
+            WHEN 'exportador' THEN v_exportador
+        END;
+
+        IF v_cantidad <> 1 OR NOT v_coincide THEN
+            RAISE EXCEPTION
+                'Cliente %: debe tener exactamente el subtipo %, cantidad encontrada %',
+                v_id, v_tipo, v_cantidad
+                USING ERRCODE = '23514';
+        END IF;
+    END LOOP;
+
+    RETURN NULL;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.fn_trg_validar_subtipo_cliente()
+FROM PUBLIC;
+
+DROP TRIGGER IF EXISTS trg_validar_subtipo_cliente
+ON public.cliente;
+
+CREATE CONSTRAINT TRIGGER trg_validar_subtipo_cliente
+AFTER INSERT OR UPDATE OR DELETE ON public.cliente
+DEFERRABLE INITIALLY DEFERRED
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_subtipo_cliente();
+
+DROP TRIGGER IF EXISTS trg_validar_subtipo_socio
+ON public.cliente_socio;
+
+CREATE CONSTRAINT TRIGGER trg_validar_subtipo_socio
+AFTER INSERT OR UPDATE OR DELETE ON public.cliente_socio
+DEFERRABLE INITIALLY DEFERRED
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_subtipo_cliente();
+
+DROP TRIGGER IF EXISTS trg_validar_subtipo_distribuidor
+ON public.cliente_distribuidor;
+
+CREATE CONSTRAINT TRIGGER trg_validar_subtipo_distribuidor
+AFTER INSERT OR UPDATE OR DELETE ON public.cliente_distribuidor
+DEFERRABLE INITIALLY DEFERRED
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_subtipo_cliente();
+
+DROP TRIGGER IF EXISTS trg_validar_subtipo_exportador
+ON public.cliente_exportador;
+
+CREATE CONSTRAINT TRIGGER trg_validar_subtipo_exportador
+AFTER INSERT OR UPDATE OR DELETE ON public.cliente_exportador
+DEFERRABLE INITIALLY DEFERRED
+FOR EACH ROW
+EXECUTE FUNCTION public.fn_trg_validar_subtipo_cliente();

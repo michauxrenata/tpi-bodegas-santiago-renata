@@ -35,4 +35,7 @@
 \echo '=== Reglas basicas y auditoria ==='
 \ir ../database/tests/reglas_basicas.sql
 
+\echo '=== Jerarquia de clientes ==='
+\ir ../database/tests/subtipos_cliente.sql
+
 \echo '=== Suite finalizada sin errores ==='

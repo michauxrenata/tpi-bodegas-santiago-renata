@@ -67,11 +67,17 @@ requieren mantenimiento explicito de totales (U1); no existe automatismo general
 
 ## Decisiones
 
-- **Jerarquía:** supertipo `cliente` más tres tablas de subtipos. Evita columnas
-  nulas de país/habilitación en tipos incompatibles y permite que los permisos
-  referencien solamente exportadores. Cuesta joins adicionales. Las FK actuales
-  no garantizan exclusividad, totalidad ni concordancia con `tipo_cliente`;
-  el equipo debe implementar ese control diferido o revisar el mapeo.
+- **Jerarquía:** supertipo `cliente` más tres tablas de subtipos.
+  Las PK/FK se complementan con `fn_trg_validar_subtipo_cliente` y cuatro
+  constraint triggers diferidos sobre cliente y sus subtipos.
+  Al confirmar la transacción, cada cliente existente debe tener exactamente
+  un subtipo y este debe coincidir con `tipo_cliente`.
+  Esto permite completar altas y cambios de tipo en varios pasos dentro
+  de una transacción. El borrado del cliente admite la cascada de su subtipo.
+  `subtipos_cliente.sql` prueba altas válidas, ausencia, duplicidad,
+  incompatibilidad, cambios de tipo y borrado en cascada.
+  Estos casos fueron verificados en PostgreSQL 16; no se realizó una prueba
+  específica de concurrencia sobre la jerarquía.
 - **Claves naturales:** CUIT de bodega y empleado es identificador del dominio;
   `cuit_dom` valida once dígitos, no el dígito verificador. CUIT de transportista
   es UNIQUE con PK subrogada. Código postal como PK supone una localidad por
@@ -114,6 +120,7 @@ requieren mantenimiento explicito de totales (U1); no existe automatismo general
 6. D5 ya esta coordinado: el borrado administrativo de ingresos procesados de mas
    de 365 dias admite cascada sin reponer stock; depuracion_ingresos.sql prueba la frontera.
 
-La jerarquia de clientes y los alcances restantes de revision_modelo_y_cobertura.md
-impiden declarar cerrado H1/H2. Las reglas integradas no deben seguir figurando como ausentes.
+El control de jerarquía está implementado y sus casos funcionales fueron
+validados. Los alcances restantes de `revision_modelo_y_cobertura.md`,
+incluida la actualización del DER gráfico, siguen pendientes de cierre.
 
