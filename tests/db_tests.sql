@@ -32,4 +32,7 @@
 \echo '=== Proteccion de cabeceras ==='
 \ir ../database/tests/proteccion_cabeceras.sql
 
+\echo '=== Reglas basicas y auditoria ==='
+\ir ../database/tests/reglas_basicas.sql
+
 \echo '=== Suite finalizada sin errores ==='

@@ -1,8 +1,8 @@
 # H1 · Justificación de normalización y decisiones de diseño
 
-Responsable: Santiago. Base revisada: `001_esquema.sql` del commit
-`b24d20e930dea300b8f8bdebdb5860408453bf33`. Esta revisión describe el modelo
-implementado y distingue las decisiones justificadas de los controles pendientes.
+Responsable original: Santiago. Revision de integracion: Renata, 2026-11-09.
+Base: migraciones 001-008 de `d4847bddac88f1b8f957c0b1ca38b271401e0b93`.
+Consultar `diccionario_datos.md` y `revision_modelo_y_cobertura.md` para el estado vigente.
 
 ## Dependencias funcionales
 
@@ -17,7 +17,7 @@ monetarias expresamente identificadas más abajo.
 | empleado | cuit | nombre, fecha_ingreso, salario, id_sala |
 | finca | id_finca | nombre, superficie_ha, departamento, provincia |
 | parcela | (id_finca, nro_parcela) | superficie_ha, anio_plantacion, id_cepa |
-| lote_uva | nro_lote; alternativamente (id_finca, nro_parcela, campana) | fecha_cosecha, kg_cosechados, bodega destino; la clave alternativa requiere integrar el UNIQUE de 002 de Valentina |
+| lote_uva | nro_lote; alternativamente (id_finca, nro_parcela, campana) | fecha_cosecha, kg_cosechados, bodega destino; clave alternativa implementada por el UNIQUE de 002 |
 | analisis_calidad | id_analisis | lote, fecha, Brix, pH, acidez |
 | bodega | cuit | razón social, domicilio |
 | cepa | id_cepa; nombre UNIQUE | nombre y tipo |
@@ -46,7 +46,7 @@ monetarias expresamente identificadas más abajo.
 
 **1FN.** Cada columna contiene un valor de su dominio. Cepas, maridajes,
 permisos y renglones se representan como filas relacionadas, no como listas en
-una columna. El JSON de `vw_ficha_vino` es solamente una representación de lectura.
+una columna. Las vistas actuales son representaciones de lectura y no cambian las claves del modelo.
 
 **2FN.** En las claves compuestas, los atributos dependen del par completo:
 la cantidad de stock depende de sala y vino; el porcentaje depende de vino y cepa;
@@ -61,9 +61,9 @@ sus ventas y los de cepa se separan de parcela y composición.
 No se afirma que toda columna física sea estrictamente 3FN: la consigna pide
 almacenar importes derivados. En comprobante, `subtotal, descuento → total`;
 en renglón, `cantidad, precio_unitario, descuento → subtotal`. Son redundancias
-controladas que exigen triggers RN-08; hoy esos triggers todavía no existen.
-`fn_total_comprobante` proporciona el cálculo, pero por sí sola no impide que
-alguien escriba importes inconsistentes directamente.
+controladas mediante triggers RN-08 para INSERT de ventas y permisos por columna.
+El operador no escribe montos ni modifica detalles existentes. Las ediciones administrativas
+requieren mantenimiento explicito de totales (U1); no existe automatismo general UPDATE/DELETE.
 
 ## Decisiones
 
@@ -93,16 +93,16 @@ alguien escriba importes inconsistentes directamente.
   Por eso no se trata simplemente de copiar una tasa derivada del tipo. Las tasas
   base 0.10/0.20/0.30 se asignan al crear o cambiar de tipo; U6 es una actualización
   explícita. Agregar/quitar permisos no recalcula la tasa ni las ventas históricas.
-  La asignación automática requiere el trigger de Sol, aún pendiente de integrar.
+  La asignacion automatica ya esta implementada por el trigger de descuento base en 005.
 - **FK:** RESTRICT conserva referencias a vino, bodega, transportista y sala con
   movimientos. CASCADE en renglones/subtipos/asociaciones elimina dependientes
   de su propietario. El DDL omite ON UPDATE: PostgreSQL usa NO ACTION; se asume
   que las claves no se editan. No se describe como CASCADE algo que no está escrito.
 
-## Revisiones para integrar con Renata, Valentina y Sol
+## Decisiones y revisiones pendientes
 
-1. Integrar y probar 002 de Valentina: incorpora UNIQUE de parcela/campaña y
-   vino/bodega/nombre/añada/presentación y CHECK avanzados ausentes del DDL inicial.
+1. Las restricciones de 002 estan integradas. La prueba reglas_basicas.sql agrega
+   casos de rechazo para restricciones simples; paso tambien en PostgreSQL 16.15 el 2026-11-09.
 2. `cliente.localidad` es texto sin FK; no asegura que exista en el catálogo.
    Evaluar sustituirlo por código/ID sin perder los datos ya cargados.
 3. `nro_doc` UNIQUE es más restrictivo que `(tipo_doc, nro_doc)`; decidir según
@@ -111,8 +111,9 @@ alguien escriba importes inconsistentes directamente.
    Un catálogo geográfico permitiría validar pares, sin inventar esa dependencia.
 5. Auditar `ON DELETE CASCADE` de auditoría de precios: podría perder historial
    cuando se borra un vino sin otros movimientos. Acordar retención con el equipo.
-6. Coordinar D5 (borrar ingresos procesados) con RN-12 (bloquear sus renglones).
-   Un trigger demasiado estricto puede bloquear también el borrado por cascada.
+6. D5 ya esta coordinado: el borrado administrativo de ingresos procesados de mas
+   de 365 dias admite cascada sin reponer stock; depuracion_ingresos.sql prueba la frontera.
 
-Estos pendientes impiden declarar cerrado H1/H2 para el grupo, aunque esta
-justificación y las rutinas de Santiago estén disponibles para revisión.
+La jerarquia de clientes y los alcances restantes de revision_modelo_y_cobertura.md
+impiden declarar cerrado H1/H2. Las reglas integradas no deben seguir figurando como ausentes.
+

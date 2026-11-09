@@ -1,0 +1,11 @@
+OK migracion 001_esquema.sql
+OK migracion 002_constraints.sql
+OK migracion 003_funciones.sql
+OK migracion 004_procedimientos.sql
+OK migracion 005_triggers.sql
+OK migracion 006_vistas.sql
+OK migracion 007_roles.sql
+OK migracion 008_indices.sql
+OK reglas_basicas.sql: 26 rechazos con SQLSTATE exacto, auditoria, fecha inicial, limites de graduacion y validacion diferida
+OK ROLLBACK: sin bodegas de prueba persistidas
+ALCANCE: PGlite; no sustituye PostgreSQL 16 ni prueba concurrencia.
