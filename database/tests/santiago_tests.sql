@@ -93,6 +93,13 @@ END $$;
 INSERT INTO cepa(id_cepa,nombre,tipo) OVERRIDING SYSTEM VALUE VALUES
 (-901,'STG Cepa A','blanca'),(-902,'STG Cepa B','blanca');
 INSERT INTO composicion_vino VALUES (-903,-901,60),(-903,-902,40);
+
+-- Composicion completa de los otros vinos de prueba.
+INSERT INTO cepa(id_cepa,nombre,tipo) OVERRIDING SYSTEM VALUE
+VALUES (-903,'STG Cepa Tinta','tinta');
+
+INSERT INTO composicion_vino(cod_vino,id_cepa,porcentaje)
+VALUES (-901,-903,100),(-902,-903,100);
 INSERT INTO maridaje(id_maridaje,nombre,temp_servicio_sugerida_c) OVERRIDING SYSTEM VALUE VALUES
 (-901,'STG Maridaje A',8),(-902,'STG Maridaje B',10);
 INSERT INTO vino_maridaje VALUES (-903,-901),(-903,-902);
@@ -105,4 +112,6 @@ DO $$ BEGIN
     BEGIN PERFORM fn_total_comprobante(-9999); RAISE EXCEPTION 'Aceptó comprobante ausente';
     EXCEPTION WHEN no_data_found THEN NULL; END;
 END $$;
+-- Ejecutar las validaciones diferidas antes de revertir.
+SET CONSTRAINTS ALL IMMEDIATE;
 ROLLBACK;
