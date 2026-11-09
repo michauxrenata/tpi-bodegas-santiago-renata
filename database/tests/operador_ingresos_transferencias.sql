@@ -23,6 +23,19 @@ INSERT INTO public.vino
 OVERRIDING SYSTEM VALUE
 VALUES (-950, 'Prueba permisos', 'tinto', 2024, 750, 14, 100, '99000000001');
 
+-- Fixture RN05 completo: vino de prueba con composicion del 100 %.
+INSERT INTO public.cepa (id_cepa, nombre, tipo)
+OVERRIDING SYSTEM VALUE
+VALUES (-950, 'Cepa fixture RN05 -950', 'tinta');
+
+INSERT INTO public.composicion_vino (cod_vino, id_cepa, porcentaje)
+VALUES (-950, -950, 100);
+
+-- Validar el fixture antes de ejecutar operaciones como operador.
+SET CONSTRAINTS ALL IMMEDIATE;
+SET CONSTRAINTS ALL DEFERRED;
+
+
 -- Desde aqui se usan los permisos del operador.
 SET LOCAL ROLE rol_operador_ventas;
 
@@ -63,4 +76,6 @@ SELECT cantidad AS sala_esperado_3
 FROM public.stock_sala
 WHERE id_sala = -950 AND cod_vino = -950;
 
+-- Validar restricciones pendientes antes de revertir.
+SET CONSTRAINTS ALL IMMEDIATE;
 ROLLBACK;

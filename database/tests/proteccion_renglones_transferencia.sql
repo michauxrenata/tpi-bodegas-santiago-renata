@@ -18,6 +18,19 @@ INSERT INTO public.vino
 OVERRIDING SYSTEM VALUE
 VALUES (-985, 'Vino RN12', 'tinto', 2024, 750, 13, 100, '99000000985');
 
+-- Fixture RN05 completo: vino de prueba con composicion del 100 %.
+INSERT INTO public.cepa (id_cepa, nombre, tipo)
+OVERRIDING SYSTEM VALUE
+VALUES (-985, 'Cepa fixture RN05 -985', 'tinta');
+
+INSERT INTO public.composicion_vino (cod_vino, id_cepa, porcentaje)
+VALUES (-985, -985, 100);
+
+-- Validar el fixture antes de ejecutar operaciones como operador.
+SET CONSTRAINTS ALL IMMEDIATE;
+SET CONSTRAINTS ALL DEFERRED;
+
+
 INSERT INTO public.transferencia (numero_solicitud, id_sala)
 OVERRIDING SYSTEM VALUE
 VALUES (-985, -985), (-986, -985);
@@ -120,4 +133,6 @@ BEGIN
 END;
 $$;
 
+-- Validar restricciones pendientes antes de revertir.
+SET CONSTRAINTS ALL IMMEDIATE;
 ROLLBACK;

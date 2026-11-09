@@ -23,7 +23,20 @@ INSERT INTO public.vino
 OVERRIDING SYSTEM VALUE
 VALUES (-980, 'Prueba permisos', 'tinto', 2024, 750, 14, 100, '99000000981');
 
--- Desde aqui se usan los permisos del operador.
+-- Fixture RN05 completo: vino de prueba con composicion del 100 %.
+INSERT INTO public.cepa (id_cepa, nombre, tipo)
+OVERRIDING SYSTEM VALUE
+VALUES (-980, 'Cepa fixture RN05 -980', 'tinta');
+
+INSERT INTO public.composicion_vino (cod_vino, id_cepa, porcentaje)
+VALUES (-980, -980, 100);
+
+-- Validar el fixture antes de ejecutar operaciones como operador.
+SET CONSTRAINTS ALL IMMEDIATE;
+SET CONSTRAINTS ALL DEFERRED;
+
+
+-- La depuracion historica se prueba como administrador.
 
 DO $$
 DECLARE
@@ -123,4 +136,6 @@ BEGIN
 END;
 $$;
 
+-- Validar restricciones pendientes antes de revertir.
+SET CONSTRAINTS ALL IMMEDIATE;
 ROLLBACK;
