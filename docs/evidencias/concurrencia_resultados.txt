@@ -1,0 +1,122 @@
+PRUEBA A
+bodegas_atuel=# BEGIN ISOLATION LEVEL READ COMMITTED;
+SET LOCAL ROLE rol_operador_ventas;
+
+INSERT INTO public.renglon_comprobante
+(numero_comprobante, cod_vino, cantidad)
+VALUES (-970, -970, 1);
+BEGIN
+SET
+INSERT 0 1
+bodegas_atuel=*> COMMIT;
+COMMIT
+bodegas_atuel=# SELECT cantidad
+FROM public.stock_sala
+WHERE id_sala = -970 AND cod_vino = -970;
+
+SELECT numero_comprobante, cod_vino, cantidad
+FROM public.renglon_comprobante
+WHERE numero_comprobante IN (-970, -971);
+ cantidad 
+----------
+        0
+(1 row)
+
+ numero_comprobante | cod_vino | cantidad 
+--------------------+----------+----------
+               -970 |     -970 |        1
+(1 row)
+
+bodegas_atuel=# CREATE SCHEMA demo_concurrencia;
+
+CREATE TABLE demo_concurrencia.stock (
+    id INTEGER PRIMARY KEY,
+    cantidad INTEGER NOT NULL CHECK (cantidad >= 0)
+);
+
+CREATE TABLE demo_concurrencia.venta (
+    sesion TEXT PRIMARY KEY,
+    cantidad INTEGER NOT NULL
+);
+
+INSERT INTO demo_concurrencia.stock VALUES (1, 1);
+CREATE SCHEMA
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+bodegas_atuel=# BEGIN ISOLATION LEVEL READ COMMITTED;
+
+SELECT cantidad AS disponible
+FROM demo_concurrencia.stock
+WHERE id = 1
+\gset
+
+\echo Stock leido por A: :disponible
+BEGIN
+Stock leido por A: 1
+bodegas_atuel=*# INSERT INTO demo_concurrencia.venta VALUES ('A', 1);
+
+UPDATE demo_concurrencia.stock
+SET cantidad = :disponible - 1
+WHERE id = 1;
+
+COMMIT;
+INSERT 0 1
+UPDATE 1
+COMMIT
+bodegas_atuel=# SELECT * FROM demo_concurrencia.stock;
+
+SELECT COUNT(*) AS ventas,
+       SUM(cantidad) AS botellas_vendidas
+FROM demo_concurrencia.venta;
+ id | cantidad 
+----+----------
+  1 |        0
+(1 row)
+
+ ventas | botellas_vendidas 
+--------+-------------------
+      2 |                 2
+(1 row)
+
+bodegas_atuel=# ;17R
+
+PRUEBA B
+PS C:\Users\Santiago Viñolo\Desktop\Facu\3er año\Base de datos\tpi-bodegas-santiago-renata> cd "C:\Users\Santiago Viñolo\Desktop\Facu\3er año\Base de datos\tpi-bodegas-santiago-renata"
+PS C:\Users\Santiago Viñolo\Desktop\Facu\3er año\Base de datos\tpi-bodegas-santiago-renata> docker compose exec db psql -X -U postgres -d bodegas_atuel
+psql (16.15 (Debian 16.15-1.pgdg13+2))
+Type "help" for help.
+
+bodegas_atuel=# BEGIN ISOLATION LEVEL READ COMMITTED;
+SET LOCAL ROLE rol_operador_ventas;
+
+INSERT INTO public.renglon_comprobante
+(numero_comprobante, cod_vino, cantidad)
+VALUES (-971, -970, 1);
+BEGIN
+SET
+ERROR:  Stock insuficiente del vino -970: disponible 0, solicitado 1
+CONTEXT:  PL/pgSQL function public.fn_trg_validar_stock_venta() line 22 at RAISE
+bodegas_atuel=!# ROLLBACK;
+ROLLBACK
+bodegas_atuel=# BEGIN ISOLATION LEVEL READ COMMITTED;
+
+SELECT cantidad AS disponible
+FROM demo_concurrencia.stock
+WHERE id = 1
+\gset
+
+\echo Stock leido por A: :disponible
+BEGIN
+Stock leido por A: 1
+bodegas_atuel=*# INSERT INTO demo_concurrencia.venta VALUES ('B', 1);
+
+UPDATE demo_concurrencia.stock
+SET cantidad = :disponible - 1
+WHERE id = 1;
+
+COMMIT;
+INSERT 0 1
+UPDATE 1
+COMMIT
+bodegas_atuel=# ;17R
