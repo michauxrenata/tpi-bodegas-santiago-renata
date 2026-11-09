@@ -15,7 +15,7 @@ export async function probarDescuentos(db,root) {
   const antes=await historia();
   await db.exec('BEGIN');
   try {
-    // No suplanta el trigger de Sol: asigna explícitamente datos válidos al fixture.
+    // El alta asigna la tasa base; luego se prepara el cliente ya bonificado..
     await db.exec(`
       INSERT INTO cliente(id_cliente,nombre_razon_social,tipo_doc,nro_doc,direccion,localidad,tipo_cliente,descuento)
       OVERRIDING SYSTEM VALUE VALUES
@@ -23,6 +23,7 @@ export async function probarDescuentos(db,root) {
       (-911,'Exportador tres permisos','TEST','STG11','Prueba','Prueba','exportador',.30),
       (-912,'Exportador ya bonificado','TEST','STG12','Prueba','Prueba','exportador',.35);
       INSERT INTO cliente_exportador VALUES (-910,'Chile'),(-911,'Chile'),(-912,'Chile');
+      UPDATE cliente SET descuento=0.35 WHERE id_cliente=-912;
       INSERT INTO permiso_exportacion
       SELECT 'U6-'||i, -911, DATE '2020-01-01', DATE '2021-01-01' FROM generate_series(1,3) i;
       INSERT INTO permiso_exportacion

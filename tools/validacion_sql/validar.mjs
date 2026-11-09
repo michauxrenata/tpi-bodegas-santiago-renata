@@ -19,7 +19,8 @@ let fixture=readFileSync(root+'database/tests/santiago_tests.sql','utf8').replac
 await db.exec(fixture);
 await db.exec(readFileSync(root+'database/tests/consultas_fixture.sql','utf8'));
 const results=await db.exec(strip(readFileSync(root+'consultas/select_avanzadas.sql','utf8')));
-if(results.length!==6 || results[0].rows[0].stock_total!==10) throw Error('S9 results');
+// Vino -903: 7 en deposito y 0 en sala despues de las ventas.
+if(results.length!==6 || Number(results[0].rows[0].stock_total)!==7) throw Error('S9 results');
 assert.equal(results[1].rows.length,3);
 assert.equal(Number(results[1].rows[0].promedio_finca),150);
 assert.equal(results[1].rows[0].bajo_promedio,true);
