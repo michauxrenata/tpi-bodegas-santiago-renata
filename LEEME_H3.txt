@@ -1,0 +1,18 @@
+ARCHIVOS PARA COPIAR EN LA RAIZ DEL REPOSITORIO
+
+1. Respaldar etapa3_carga.py actual (o conservar el archivo adjunto en el chat).
+2. Copiar el contenido de este ZIP dentro del proyecto, reemplazando etapa3_carga.py.
+3. data/localidades.csv es nuevo. Los otros tres CSV existentes NO se reemplazan.
+4. Seguir docs/H3_EJECUCION.md. Primero perfil prueba --comparar sobre
+   bodegas_carga_h3 vacia, ya preparada con migraciones 001-008.
+5. No ejecutar el perfil completo sobre la base que contiene la prueba.
+6. No agregar .venv, __pycache__, .env ni dumps grandes a Git.
+
+Cambios: catalogos CSV; generacion completa de 29 tablas; fechas coherentes;
+planificacion demanda/stock; llamadas a procedimientos; ventas con triggers;
+comparacion individual/lotes; controles y reportes; exportador SQL gzip.
+
+Se conservan los conceptos utiles del archivo recibido, pero se reemplaza la
+organizacion por niveles incompletos por un plan de datos y un cargador comun.
+No se han modificado tu PC, Docker ni GitHub desde el chat. Todavia no hacer commit
+hasta comprobar el perfil pequeno en tu PostgreSQL 16.

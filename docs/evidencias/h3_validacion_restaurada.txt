@@ -1,0 +1,15 @@
+﻿VALIDACION DEL DUMP H3
+Base restaurada: bodegas_h3_restaurada
+Restauracion con ON_ERROR_STOP y transaccion unica: codigo de salida 0.
+Roles: migracion 007 reaplicada.
+
+29 tablas con datos.
+Clientes: 20000
+Comprobantes: 150000
+Renglones de comprobante: 500000
+
+Controles del generador sobre la base restaurada: OK.
+Conteos, FK, subtipos, composicion, fechas, importes, stocks y auditoria: OK.
+Triggers activos en modo normal: OK.
+
+Resultado: restauracion validada.

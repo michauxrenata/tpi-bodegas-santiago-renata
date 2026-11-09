@@ -1,0 +1,52 @@
+{
+  "perfil": "completo",
+  "semilla": 42,
+  "fecha_referencia": "2025-01-15",
+  "faker": "40.44.0",
+  "psycopg2": "2.9.13 (dt dec pq3 ext lo64)",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "tiempos_carga_segundos": {
+    "lotes": 379.4605
+  },
+  "catalogos_sha256": {
+    "cepas.csv": "fafdf12843907d3f145a130e357ff8c1ab2683f8007250d4618298de61adea81",
+    "departamentos.csv": "30d6cb8dc34af2ecaf22ba7dc29d3497b11f028f6e8ad3718317d6304ce68895",
+    "maridajes.csv": "85ab3939c1a3486eb41e8344d9708af5fd6f1c8f737302e94329b89b79c27375",
+    "localidades.csv": "594321147ba4b00bda4f1463e097986555959e70076d757fde50fd7fa78a3cce"
+  },
+  "base": "bodegas_carga_h3_completa",
+  "motor": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "conteos": {
+    "localidad": 5,
+    "sala_venta": 15,
+    "empleado": 300,
+    "bodega": 10,
+    "cepa": 8,
+    "finca": 50,
+    "parcela": 100,
+    "lote_uva": 300,
+    "analisis_calidad": 300,
+    "vino": 300,
+    "composicion_vino": 600,
+    "maridaje": 7,
+    "vino_maridaje": 300,
+    "cliente": 20000,
+    "cliente_socio": 6667,
+    "cliente_distribuidor": 6667,
+    "cliente_exportador": 6666,
+    "permiso_exportacion": 19997,
+    "transportista": 15,
+    "transportista_cobertura": 75,
+    "stock_deposito": 300,
+    "ingreso": 10,
+    "renglon_ingreso": 300,
+    "transferencia": 15,
+    "renglon_transferencia": 4500,
+    "stock_sala": 4500,
+    "comprobante": 150000,
+    "renglon_comprobante": 500000,
+    "auditoria_precio": 1
+  },
+  "controles": "OK: conteos, FK, subtipos, composicion, fechas, importes, stocks, auditoria y triggers",
+  "commit": "confirmado"
+}
