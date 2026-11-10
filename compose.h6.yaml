@@ -1,0 +1,50 @@
+services:
+  api-init:
+    build: ./api
+    command: ["python", "bootstrap.py"]
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Defini POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Defini POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Defini POSTGRES_PASSWORD en .env}
+      API_DB_NAME: ${API_DB_NAME:-bodegas_api_h6}
+      API_DB_USER: ${API_DB_USER:-bodegas_api_h6_login}
+      API_DB_PASSWORD: ${API_DB_PASSWORD:?Agrega API_DB_PASSWORD a .env}
+      API_DB_HOST: db
+      API_DB_PORT: 5432
+    volumes:
+      - ./database/migrations:/srv/migrations:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+  api:
+    build: ./api
+    environment:
+      API_DB_NAME: ${API_DB_NAME:-bodegas_api_h6}
+      API_DB_USER: ${API_DB_USER:-bodegas_api_h6_login}
+      API_DB_PASSWORD: ${API_DB_PASSWORD:?Agrega API_DB_PASSWORD a .env}
+      API_DB_HOST: db
+      API_DB_PORT: 5432
+    ports:
+      - "127.0.0.1:${API_PORT:-8000}:8000"
+    depends_on:
+      api-init:
+        condition: service_completed_successfully
+  api-test:
+    profiles: ["test"]
+    build: ./api
+    entrypoint: ["sh", "-c", "python bootstrap.py && pytest -q tests"]
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Defini POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Defini POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Defini POSTGRES_PASSWORD en .env}
+      API_DB_NAME: bodegas_api_h6_test
+      API_DB_USER: bodegas_api_h6_test_login
+      API_DB_PASSWORD: ${API_TEST_PASSWORD:?Agrega API_TEST_PASSWORD a .env}
+      API_DB_HOST: db
+      API_DB_PORT: 5432
+    volumes:
+      - ./database/migrations:/srv/migrations:ro
+    depends_on:
+      db:
+        condition: service_healthy

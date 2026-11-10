@@ -1,0 +1,596 @@
+{
+  "info": {
+    "name": "Bodegas del Atuel — H6 API",
+    "description": "Solicitudes de ejemplo. Crear primero catálogos válidos; los IDs ilustrativos dependen de la base.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Salud",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/salud",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "salud"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar y filtrar vinos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/vinos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "vinos"
+          ],
+          "query": [
+            {
+              "key": "tipo",
+              "value": "tinto"
+            },
+            {
+              "key": "cepa",
+              "value": "1"
+            },
+            {
+              "key": "bodega",
+              "value": "99000000001"
+            },
+            {
+              "key": "anada",
+              "value": "2024"
+            },
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ver vino",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/vinos/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "vinos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear vino",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/vinos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "vinos"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"API Malbec\",\n  \"tipo\": \"tinto\",\n  \"anada\": 2024,\n  \"volumen_ml\": 750,\n  \"graduacion\": 14,\n  \"precio\": 100,\n  \"cuit_bodega\": \"99000000001\",\n  \"composicion\": [\n    {\n      \"id_cepa\": 1,\n      \"porcentaje\": 100\n    }\n  ],\n  \"maridajes\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Actualizar vino",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/vinos/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "vinos",
+            "1"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"API Malbec\",\n  \"tipo\": \"tinto\",\n  \"anada\": 2024,\n  \"volumen_ml\": 750,\n  \"graduacion\": 14,\n  \"precio\": 110,\n  \"cuit_bodega\": \"99000000001\",\n  \"composicion\": [\n    {\n      \"id_cepa\": 1,\n      \"porcentaje\": 100\n    }\n  ],\n  \"maridajes\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Eliminar vino",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/vinos/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "vinos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar clientes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ver cliente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear cliente socio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre_razon_social\": \"API Cliente\",\n  \"tipo_doc\": \"DNI\",\n  \"nro_doc\": \"API-001\",\n  \"direccion\": \"Calle 1\",\n  \"localidad\": \"Mendoza\",\n  \"tipo_cliente\": \"socio\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Crear comprobante",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/comprobantes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comprobantes"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_cliente\": 1,\n  \"id_sala\": 1,\n  \"renglones\": [\n    {\n      \"cod_vino\": 1,\n      \"cantidad\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Ver comprobante",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/comprobantes/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comprobantes",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear ingreso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/ingresos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ingresos"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo_transportista\": 1,\n  \"cuit_bodega\": \"99000000001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Agregar renglón de ingreso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/ingresos/1/renglones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ingresos",
+            "1",
+            "renglones"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cod_vino\": 1,\n  \"cantidad\": 5\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Terminar ingreso",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/ingresos/1/terminar",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ingresos",
+            "1",
+            "terminar"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Procesar ingreso",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/ingresos/1/procesar",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ingresos",
+            "1",
+            "procesar"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear transferencia",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/transferencias",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transferencias"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_sala\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Agregar renglón de transferencia",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/transferencias/1/renglones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transferencias",
+            "1",
+            "renglones"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cod_vino\": 1,\n  \"cantidad\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Terminar transferencia",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transferencias/1/terminar",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transferencias",
+            "1",
+            "terminar"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Procesar transferencia",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transferencias/1/procesar",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transferencias",
+            "1",
+            "procesar"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reporte top vinos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reportes/top-vinos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reportes",
+            "top-vinos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reporte ventas por sala",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reportes/ventas-por-sala",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reportes",
+            "ventas-por-sala"
+          ],
+          "query": [
+            {
+              "key": "fecha_ref",
+              "value": "2025-01-15"
+            },
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reporte sin stock",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reportes/vinos-sin-stock",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reportes",
+            "vinos-sin-stock"
+          ],
+          "query": [
+            {
+              "key": "sala",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reporte transportista activo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reportes/transportista-activo",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reportes",
+            "transportista-activo"
+          ],
+          "query": [
+            {
+              "key": "fecha_ref",
+              "value": "2025-01-15"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trazabilidad candidata",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reportes/trazabilidad/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reportes",
+            "trazabilidad",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}

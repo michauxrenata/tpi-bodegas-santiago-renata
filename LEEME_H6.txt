@@ -1,0 +1,24 @@
+H6 - API REST BODEGAS DEL ATUEL
+
+Contenido del paquete:
+- api/: FastAPI, capa DAL, conexión/pool y 14 pruebas PostgreSQL.
+- database/migrations/009_api_catalogos.sql: permisos mínimos de escritura para catálogos.
+- compose.h6.yaml: servicios api-init, api y api-test para combinar con Compose existente.
+- .env.h6.example: nombres de variables nuevas; contiene solo valores de ejemplo.
+- docs/H6_API.md: instalación, endpoints, estados HTTP y límites conocidos.
+- docs/h6_postman_collection.json: colección importable en Postman.
+
+Instalación en Windows:
+1. Extraer el ZIP dentro de la raíz del repositorio en la rama renata/api-h6.
+2. No reemplazar el .env existente. Abrir el .env y agregar API_DB_PASSWORD y API_TEST_PASSWORD con dos secretos distintos. Se pueden agregar también API_DB_NAME, API_DB_USER y API_PORT si se quieren cambiar los valores predeterminados.
+3. Desde PowerShell, en la raíz del repositorio:
+   docker compose -f compose.yaml -f compose.h6.yaml --profile test run --rm api-test
+4. Si las pruebas pasan, iniciar la API:
+   docker compose -f compose.yaml -f compose.h6.yaml up --build -d api
+5. Verificar:
+   Invoke-RestMethod http://localhost:8000/salud
+   Start-Process http://localhost:8000/docs
+
+api-init crea y migra bases separadas bodegas_api_h6 y bodegas_api_h6_test. No usa ni modifica la base de trabajo existente. Las pruebas son de integración y requieren que el servicio db esté saludable. El usuario de la API no recibe permisos de escritura directa en stock ni estados.
+
+No incluir el .env en Git ni compartir sus secretos.
