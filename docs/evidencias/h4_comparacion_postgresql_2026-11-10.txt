@@ -1,0 +1,1207 @@
+BEGIN
+DROP INDEX
+ANALYZE
+                                               QUERY PLAN                                                
+---------------------------------------------------------------------------------------------------------
+ [                                                                                                      +
+   {                                                                                                    +
+     "Plan": {                                                                                          +
+       "Node Type": "Sort",                                                                             +
+       "Parallel Aware": false,                                                                         +
+       "Async Capable": false,                                                                          +
+       "Startup Cost": 8427.52,                                                                         +
+       "Total Cost": 8427.56,                                                                           +
+       "Plan Rows": 15,                                                                                 +
+       "Plan Width": 36,                                                                                +
+       "Actual Startup Time": 136.089,                                                                  +
+       "Actual Total Time": 144.105,                                                                    +
+       "Actual Rows": 15,                                                                               +
+       "Actual Loops": 1,                                                                               +
+       "Sort Key": ["(sum(total)) DESC"],                                                               +
+       "Sort Method": "quicksort",                                                                      +
+       "Sort Space Used": 25,                                                                           +
+       "Sort Space Type": "Memory",                                                                     +
+       "Shared Hit Blocks": 2496,                                                                       +
+       "Shared Read Blocks": 3923,                                                                      +
+       "Shared Dirtied Blocks": 0,                                                                      +
+       "Shared Written Blocks": 0,                                                                      +
+       "Local Hit Blocks": 0,                                                                           +
+       "Local Read Blocks": 0,                                                                          +
+       "Local Dirtied Blocks": 0,                                                                       +
+       "Local Written Blocks": 0,                                                                       +
+       "Temp Read Blocks": 0,                                                                           +
+       "Temp Written Blocks": 0,                                                                        +
+       "Plans": [                                                                                       +
+         {                                                                                              +
+           "Node Type": "Aggregate",                                                                    +
+           "Strategy": "Sorted",                                                                        +
+           "Partial Mode": "Finalize",                                                                  +
+           "Parent Relationship": "Outer",                                                              +
+           "Parallel Aware": false,                                                                     +
+           "Async Capable": false,                                                                      +
+           "Startup Cost": 8423.31,                                                                     +
+           "Total Cost": 8427.23,                                                                       +
+           "Plan Rows": 15,                                                                             +
+           "Plan Width": 36,                                                                            +
+           "Actual Startup Time": 131.285,                                                              +
+           "Actual Total Time": 140.490,                                                                +
+           "Actual Rows": 15,                                                                           +
+           "Actual Loops": 1,                                                                           +
+           "Group Key": ["id_sala"],                                                                    +
+           "Shared Hit Blocks": 2496,                                                                   +
+           "Shared Read Blocks": 3923,                                                                  +
+           "Shared Dirtied Blocks": 0,                                                                  +
+           "Shared Written Blocks": 0,                                                                  +
+           "Local Hit Blocks": 0,                                                                       +
+           "Local Read Blocks": 0,                                                                      +
+           "Local Dirtied Blocks": 0,                                                                   +
+           "Local Written Blocks": 0,                                                                   +
+           "Temp Read Blocks": 0,                                                                       +
+           "Temp Written Blocks": 0,                                                                    +
+           "Plans": [                                                                                   +
+             {                                                                                          +
+               "Node Type": "Gather Merge",                                                             +
+               "Parent Relationship": "Outer",                                                          +
+               "Parallel Aware": false,                                                                 +
+               "Async Capable": false,                                                                  +
+               "Startup Cost": 8423.31,                                                                 +
+               "Total Cost": 8426.81,                                                                   +
+               "Plan Rows": 30,                                                                         +
+               "Plan Width": 36,                                                                        +
+               "Actual Startup Time": 131.159,                                                          +
+               "Actual Total Time": 139.214,                                                            +
+               "Actual Rows": 45,                                                                       +
+               "Actual Loops": 1,                                                                       +
+               "Workers Planned": 2,                                                                    +
+               "Workers Launched": 2,                                                                   +
+               "Shared Hit Blocks": 2496,                                                               +
+               "Shared Read Blocks": 3923,                                                              +
+               "Shared Dirtied Blocks": 0,                                                              +
+               "Shared Written Blocks": 0,                                                              +
+               "Local Hit Blocks": 0,                                                                   +
+               "Local Read Blocks": 0,                                                                  +
+               "Local Dirtied Blocks": 0,                                                               +
+               "Local Written Blocks": 0,                                                               +
+               "Temp Read Blocks": 0,                                                                   +
+               "Temp Written Blocks": 0,                                                                +
+               "Plans": [                                                                               +
+                 {                                                                                      +
+                   "Node Type": "Sort",                                                                 +
+                   "Parent Relationship": "Outer",                                                      +
+                   "Parallel Aware": false,                                                             +
+                   "Async Capable": false,                                                              +
+                   "Startup Cost": 7423.29,                                                             +
+                   "Total Cost": 7423.33,                                                               +
+                   "Plan Rows": 15,                                                                     +
+                   "Plan Width": 36,                                                                    +
+                   "Actual Startup Time": 82.934,                                                       +
+                   "Actual Total Time": 82.940,                                                         +
+                   "Actual Rows": 15,                                                                   +
+                   "Actual Loops": 3,                                                                   +
+                   "Sort Key": ["id_sala"],                                                             +
+                   "Sort Method": "quicksort",                                                          +
+                   "Sort Space Used": 26,                                                               +
+                   "Sort Space Type": "Memory",                                                         +
+                   "Shared Hit Blocks": 2496,                                                           +
+                   "Shared Read Blocks": 3923,                                                          +
+                   "Shared Dirtied Blocks": 0,                                                          +
+                   "Shared Written Blocks": 0,                                                          +
+                   "Local Hit Blocks": 0,                                                               +
+                   "Local Read Blocks": 0,                                                              +
+                   "Local Dirtied Blocks": 0,                                                           +
+                   "Local Written Blocks": 0,                                                           +
+                   "Temp Read Blocks": 0,                                                               +
+                   "Temp Written Blocks": 0,                                                            +
+                   "Workers": [                                                                         +
+                     {                                                                                  +
+                       "Worker Number": 0,                                                              +
+                       "Sort Method": "quicksort",                                                      +
+                       "Sort Space Used": 26,                                                           +
+                       "Sort Space Type": "Memory"                                                      +
+                     },                                                                                 +
+                     {                                                                                  +
+                       "Worker Number": 1,                                                              +
+                       "Sort Method": "quicksort",                                                      +
+                       "Sort Space Used": 26,                                                           +
+                       "Sort Space Type": "Memory"                                                      +
+                     }                                                                                  +
+                   ],                                                                                   +
+                   "Plans": [                                                                           +
+                     {                                                                                  +
+                       "Node Type": "Aggregate",                                                        +
+                       "Strategy": "Hashed",                                                            +
+                       "Partial Mode": "Partial",                                                       +
+                       "Parent Relationship": "Outer",                                                  +
+                       "Parallel Aware": false,                                                         +
+                       "Async Capable": false,                                                          +
+                       "Startup Cost": 7422.81,                                                         +
+                       "Total Cost": 7423.00,                                                           +
+                       "Plan Rows": 15,                                                                 +
+                       "Plan Width": 36,                                                                +
+                       "Actual Startup Time": 82.651,                                                   +
+                       "Actual Total Time": 82.672,                                                     +
+                       "Actual Rows": 15,                                                               +
+                       "Actual Loops": 3,                                                               +
+                       "Group Key": ["id_sala"],                                                        +
+                       "Planned Partitions": 0,                                                         +
+                       "HashAgg Batches": 1,                                                            +
+                       "Peak Memory Usage": 24,                                                         +
+                       "Disk Usage": 0,                                                                 +
+                       "Shared Hit Blocks": 2482,                                                       +
+                       "Shared Read Blocks": 3923,                                                      +
+                       "Shared Dirtied Blocks": 0,                                                      +
+                       "Shared Written Blocks": 0,                                                      +
+                       "Local Hit Blocks": 0,                                                           +
+                       "Local Read Blocks": 0,                                                          +
+                       "Local Dirtied Blocks": 0,                                                       +
+                       "Local Written Blocks": 0,                                                       +
+                       "Temp Read Blocks": 0,                                                           +
+                       "Temp Written Blocks": 0,                                                        +
+                       "Workers": [                                                                     +
+                         {                                                                              +
+                           "Worker Number": 0,                                                          +
+                           "HashAgg Batches": 1,                                                        +
+                           "Peak Memory Usage": 24,                                                     +
+                           "Disk Usage": 0                                                              +
+                         },                                                                             +
+                         {                                                                              +
+                           "Worker Number": 1,                                                          +
+                           "HashAgg Batches": 1,                                                        +
+                           "Peak Memory Usage": 24,                                                     +
+                           "Disk Usage": 0                                                              +
+                         }                                                                              +
+                       ],                                                                               +
+                       "Plans": [                                                                       +
+                         {                                                                              +
+                           "Node Type": "Seq Scan",                                                     +
+                           "Parent Relationship": "Outer",                                              +
+                           "Parallel Aware": true,                                                      +
+                           "Async Capable": false,                                                      +
+                           "Relation Name": "comprobante",                                              +
+                           "Alias": "comprobante",                                                      +
+                           "Startup Cost": 0.00,                                                        +
+                           "Total Cost": 7342.50,                                                       +
+                           "Plan Rows": 16062,                                                          +
+                           "Plan Width": 12,                                                            +
+                           "Actual Startup Time": 10.192,                                               +
+                           "Actual Total Time": 63.625,                                                 +
+                           "Actual Rows": 12601,                                                        +
+                           "Actual Loops": 3,                                                           +
+                           "Filter": "((fecha >= '2024-10-16'::date) AND (fecha < '2025-01-16'::date))",+
+                           "Rows Removed by Filter": 37399,                                             +
+                           "Shared Hit Blocks": 2482,                                                   +
+                           "Shared Read Blocks": 3923,                                                  +
+                           "Shared Dirtied Blocks": 0,                                                  +
+                           "Shared Written Blocks": 0,                                                  +
+                           "Local Hit Blocks": 0,                                                       +
+                           "Local Read Blocks": 0,                                                      +
+                           "Local Dirtied Blocks": 0,                                                   +
+                           "Local Written Blocks": 0,                                                   +
+                           "Temp Read Blocks": 0,                                                       +
+                           "Temp Written Blocks": 0,                                                    +
+                           "Workers": [                                                                 +
+                           ]                                                                            +
+                         }                                                                              +
+                       ]                                                                                +
+                     }                                                                                  +
+                   ]                                                                                    +
+                 }                                                                                      +
+               ]                                                                                        +
+             }                                                                                          +
+           ]                                                                                            +
+         }                                                                                              +
+       ]                                                                                                +
+     },                                                                                                 +
+     "Planning": {                                                                                      +
+       "Shared Hit Blocks": 55,                                                                         +
+       "Shared Read Blocks": 1,                                                                         +
+       "Shared Dirtied Blocks": 0,                                                                      +
+       "Shared Written Blocks": 0,                                                                      +
+       "Local Hit Blocks": 0,                                                                           +
+       "Local Read Blocks": 0,                                                                          +
+       "Local Dirtied Blocks": 0,                                                                       +
+       "Local Written Blocks": 0,                                                                       +
+       "Temp Read Blocks": 0,                                                                           +
+       "Temp Written Blocks": 0                                                                         +
+     },                                                                                                 +
+     "Planning Time": 9.753,                                                                            +
+     "Triggers": [                                                                                      +
+     ],                                                                                                 +
+     "Execution Time": 147.162                                                                          +
+   }                                                                                                    +
+ ]
+(1 row)
+
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ [                                                                                                                            +
+   {                                                                                                                          +
+     "Plan": {                                                                                                                +
+       "Node Type": "Limit",                                                                                                  +
+       "Parallel Aware": false,                                                                                               +
+       "Async Capable": false,                                                                                                +
+       "Startup Cost": 10.57,                                                                                                 +
+       "Total Cost": 10.57,                                                                                                   +
+       "Plan Rows": 1,                                                                                                        +
+       "Plan Width": 12,                                                                                                      +
+       "Actual Startup Time": 0.096,                                                                                          +
+       "Actual Total Time": 0.098,                                                                                            +
+       "Actual Rows": 0,                                                                                                      +
+       "Actual Loops": 1,                                                                                                     +
+       "Shared Hit Blocks": 1,                                                                                                +
+       "Shared Read Blocks": 0,                                                                                               +
+       "Shared Dirtied Blocks": 0,                                                                                            +
+       "Shared Written Blocks": 0,                                                                                            +
+       "Local Hit Blocks": 0,                                                                                                 +
+       "Local Read Blocks": 0,                                                                                                +
+       "Local Dirtied Blocks": 0,                                                                                             +
+       "Local Written Blocks": 0,                                                                                             +
+       "Temp Read Blocks": 0,                                                                                                 +
+       "Temp Written Blocks": 0,                                                                                              +
+       "Plans": [                                                                                                             +
+         {                                                                                                                    +
+           "Node Type": "Sort",                                                                                               +
+           "Parent Relationship": "Outer",                                                                                    +
+           "Parallel Aware": false,                                                                                           +
+           "Async Capable": false,                                                                                            +
+           "Startup Cost": 10.57,                                                                                             +
+           "Total Cost": 10.57,                                                                                               +
+           "Plan Rows": 1,                                                                                                    +
+           "Plan Width": 12,                                                                                                  +
+           "Actual Startup Time": 0.047,                                                                                      +
+           "Actual Total Time": 0.048,                                                                                        +
+           "Actual Rows": 0,                                                                                                  +
+           "Actual Loops": 1,                                                                                                 +
+           "Sort Key": ["(sum(r.cantidad)) DESC", "t.id_sala"],                                                               +
+           "Sort Method": "quicksort",                                                                                        +
+           "Sort Space Used": 25,                                                                                             +
+           "Sort Space Type": "Memory",                                                                                       +
+           "Shared Hit Blocks": 1,                                                                                            +
+           "Shared Read Blocks": 0,                                                                                           +
+           "Shared Dirtied Blocks": 0,                                                                                        +
+           "Shared Written Blocks": 0,                                                                                        +
+           "Local Hit Blocks": 0,                                                                                             +
+           "Local Read Blocks": 0,                                                                                            +
+           "Local Dirtied Blocks": 0,                                                                                         +
+           "Local Written Blocks": 0,                                                                                         +
+           "Temp Read Blocks": 0,                                                                                             +
+           "Temp Written Blocks": 0,                                                                                          +
+           "Plans": [                                                                                                         +
+             {                                                                                                                +
+               "Node Type": "Aggregate",                                                                                      +
+               "Strategy": "Sorted",                                                                                          +
+               "Partial Mode": "Simple",                                                                                      +
+               "Parent Relationship": "Outer",                                                                                +
+               "Parallel Aware": false,                                                                                       +
+               "Async Capable": false,                                                                                        +
+               "Startup Cost": 10.54,                                                                                         +
+               "Total Cost": 10.56,                                                                                           +
+               "Plan Rows": 1,                                                                                                +
+               "Plan Width": 12,                                                                                              +
+               "Actual Startup Time": 0.037,                                                                                  +
+               "Actual Total Time": 0.039,                                                                                    +
+               "Actual Rows": 0,                                                                                              +
+               "Actual Loops": 1,                                                                                             +
+               "Group Key": ["t.id_sala"],                                                                                    +
+               "Shared Hit Blocks": 1,                                                                                        +
+               "Shared Read Blocks": 0,                                                                                       +
+               "Shared Dirtied Blocks": 0,                                                                                    +
+               "Shared Written Blocks": 0,                                                                                    +
+               "Local Hit Blocks": 0,                                                                                         +
+               "Local Read Blocks": 0,                                                                                        +
+               "Local Dirtied Blocks": 0,                                                                                     +
+               "Local Written Blocks": 0,                                                                                     +
+               "Temp Read Blocks": 0,                                                                                         +
+               "Temp Written Blocks": 0,                                                                                      +
+               "Plans": [                                                                                                     +
+                 {                                                                                                            +
+                   "Node Type": "Sort",                                                                                       +
+                   "Parent Relationship": "Outer",                                                                            +
+                   "Parallel Aware": false,                                                                                   +
+                   "Async Capable": false,                                                                                    +
+                   "Startup Cost": 10.54,                                                                                     +
+                   "Total Cost": 10.54,                                                                                       +
+                   "Plan Rows": 1,                                                                                            +
+                   "Plan Width": 8,                                                                                           +
+                   "Actual Startup Time": 0.036,                                                                              +
+                   "Actual Total Time": 0.037,                                                                                +
+                   "Actual Rows": 0,                                                                                          +
+                   "Actual Loops": 1,                                                                                         +
+                   "Sort Key": ["t.id_sala"],                                                                                 +
+                   "Sort Method": "quicksort",                                                                                +
+                   "Sort Space Used": 25,                                                                                     +
+                   "Sort Space Type": "Memory",                                                                               +
+                   "Shared Hit Blocks": 1,                                                                                    +
+                   "Shared Read Blocks": 0,                                                                                   +
+                   "Shared Dirtied Blocks": 0,                                                                                +
+                   "Shared Written Blocks": 0,                                                                                +
+                   "Local Hit Blocks": 0,                                                                                     +
+                   "Local Read Blocks": 0,                                                                                    +
+                   "Local Dirtied Blocks": 0,                                                                                 +
+                   "Local Written Blocks": 0,                                                                                 +
+                   "Temp Read Blocks": 0,                                                                                     +
+                   "Temp Written Blocks": 0,                                                                                  +
+                   "Plans": [                                                                                                 +
+                     {                                                                                                        +
+                       "Node Type": "Nested Loop",                                                                            +
+                       "Parent Relationship": "Outer",                                                                        +
+                       "Parallel Aware": false,                                                                               +
+                       "Async Capable": false,                                                                                +
+                       "Join Type": "Inner",                                                                                  +
+                       "Startup Cost": 0.28,                                                                                  +
+                       "Total Cost": 10.53,                                                                                   +
+                       "Plan Rows": 1,                                                                                        +
+                       "Plan Width": 8,                                                                                       +
+                       "Actual Startup Time": 0.032,                                                                          +
+                       "Actual Total Time": 0.032,                                                                            +
+                       "Actual Rows": 0,                                                                                      +
+                       "Actual Loops": 1,                                                                                     +
+                       "Inner Unique": true,                                                                                  +
+                       "Shared Hit Blocks": 1,                                                                                +
+                       "Shared Read Blocks": 0,                                                                               +
+                       "Shared Dirtied Blocks": 0,                                                                            +
+                       "Shared Written Blocks": 0,                                                                            +
+                       "Local Hit Blocks": 0,                                                                                 +
+                       "Local Read Blocks": 0,                                                                                +
+                       "Local Dirtied Blocks": 0,                                                                             +
+                       "Local Written Blocks": 0,                                                                             +
+                       "Temp Read Blocks": 0,                                                                                 +
+                       "Temp Written Blocks": 0,                                                                              +
+                       "Plans": [                                                                                             +
+                         {                                                                                                    +
+                           "Node Type": "Seq Scan",                                                                           +
+                           "Parent Relationship": "Outer",                                                                    +
+                           "Parallel Aware": false,                                                                           +
+                           "Async Capable": false,                                                                            +
+                           "Relation Name": "transferencia",                                                                  +
+                           "Alias": "t",                                                                                      +
+                           "Startup Cost": 0.00,                                                                              +
+                           "Total Cost": 1.23,                                                                                +
+                           "Plan Rows": 1,                                                                                    +
+                           "Plan Width": 8,                                                                                   +
+                           "Actual Startup Time": 0.030,                                                                      +
+                           "Actual Total Time": 0.030,                                                                        +
+                           "Actual Rows": 0,                                                                                  +
+                           "Actual Loops": 1,                                                                                 +
+                           "Filter": "((fecha_confeccion >= '2025-01-01'::date) AND (fecha_confeccion < '2025-01-16'::date))",+
+                           "Rows Removed by Filter": 15,                                                                      +
+                           "Shared Hit Blocks": 1,                                                                            +
+                           "Shared Read Blocks": 0,                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                        +
+                           "Shared Written Blocks": 0,                                                                        +
+                           "Local Hit Blocks": 0,                                                                             +
+                           "Local Read Blocks": 0,                                                                            +
+                           "Local Dirtied Blocks": 0,                                                                         +
+                           "Local Written Blocks": 0,                                                                         +
+                           "Temp Read Blocks": 0,                                                                             +
+                           "Temp Written Blocks": 0                                                                           +
+                         },                                                                                                   +
+                         {                                                                                                    +
+                           "Node Type": "Index Scan",                                                                         +
+                           "Parent Relationship": "Inner",                                                                    +
+                           "Parallel Aware": false,                                                                           +
+                           "Async Capable": false,                                                                            +
+                           "Scan Direction": "Forward",                                                                       +
+                           "Index Name": "renglon_transferencia_pkey",                                                        +
+                           "Relation Name": "renglon_transferencia",                                                          +
+                           "Alias": "r",                                                                                      +
+                           "Startup Cost": 0.28,                                                                              +
+                           "Total Cost": 8.30,                                                                                +
+                           "Plan Rows": 1,                                                                                    +
+                           "Plan Width": 8,                                                                                   +
+                           "Actual Startup Time": 0.000,                                                                      +
+                           "Actual Total Time": 0.000,                                                                        +
+                           "Actual Rows": 0,                                                                                  +
+                           "Actual Loops": 0,                                                                                 +
+                           "Index Cond": "((numero_solicitud = t.numero_solicitud) AND (cod_vino = 1))",                      +
+                           "Rows Removed by Index Recheck": 0,                                                                +
+                           "Shared Hit Blocks": 0,                                                                            +
+                           "Shared Read Blocks": 0,                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                        +
+                           "Shared Written Blocks": 0,                                                                        +
+                           "Local Hit Blocks": 0,                                                                             +
+                           "Local Read Blocks": 0,                                                                            +
+                           "Local Dirtied Blocks": 0,                                                                         +
+                           "Local Written Blocks": 0,                                                                         +
+                           "Temp Read Blocks": 0,                                                                             +
+                           "Temp Written Blocks": 0                                                                           +
+                         }                                                                                                    +
+                       ]                                                                                                      +
+                     }                                                                                                        +
+                   ]                                                                                                          +
+                 }                                                                                                            +
+               ]                                                                                                              +
+             }                                                                                                                +
+           ]                                                                                                                  +
+         }                                                                                                                    +
+       ]                                                                                                                      +
+     },                                                                                                                       +
+     "Planning": {                                                                                                            +
+       "Shared Hit Blocks": 60,                                                                                               +
+       "Shared Read Blocks": 3,                                                                                               +
+       "Shared Dirtied Blocks": 0,                                                                                            +
+       "Shared Written Blocks": 0,                                                                                            +
+       "Local Hit Blocks": 0,                                                                                                 +
+       "Local Read Blocks": 0,                                                                                                +
+       "Local Dirtied Blocks": 0,                                                                                             +
+       "Local Written Blocks": 0,                                                                                             +
+       "Temp Read Blocks": 0,                                                                                                 +
+       "Temp Written Blocks": 0                                                                                               +
+     },                                                                                                                       +
+     "Planning Time": 7.128,                                                                                                  +
+     "Triggers": [                                                                                                            +
+     ],                                                                                                                       +
+     "Execution Time": 0.404                                                                                                  +
+   }                                                                                                                          +
+ ]
+(1 row)
+
+                                  QUERY PLAN                                  
+------------------------------------------------------------------------------
+ [                                                                           +
+   {                                                                         +
+     "Plan": {                                                               +
+       "Node Type": "Sort",                                                  +
+       "Parallel Aware": false,                                              +
+       "Async Capable": false,                                               +
+       "Startup Cost": 2.93,                                                 +
+       "Total Cost": 2.97,                                                   +
+       "Plan Rows": 15,                                                      +
+       "Plan Width": 12,                                                     +
+       "Actual Startup Time": 0.198,                                         +
+       "Actual Total Time": 0.201,                                           +
+       "Actual Rows": 15,                                                    +
+       "Actual Loops": 1,                                                    +
+       "Sort Key": ["(count(t.numero_solicitud))", "s.id_sala"],             +
+       "Sort Method": "quicksort",                                           +
+       "Sort Space Used": 25,                                                +
+       "Sort Space Type": "Memory",                                          +
+       "Shared Hit Blocks": 2,                                               +
+       "Shared Read Blocks": 0,                                              +
+       "Shared Dirtied Blocks": 0,                                           +
+       "Shared Written Blocks": 0,                                           +
+       "Local Hit Blocks": 0,                                                +
+       "Local Read Blocks": 0,                                               +
+       "Local Dirtied Blocks": 0,                                            +
+       "Local Written Blocks": 0,                                            +
+       "Temp Read Blocks": 0,                                                +
+       "Temp Written Blocks": 0,                                             +
+       "Plans": [                                                            +
+         {                                                                   +
+           "Node Type": "Aggregate",                                         +
+           "Strategy": "Hashed",                                             +
+           "Partial Mode": "Simple",                                         +
+           "Parent Relationship": "Outer",                                   +
+           "Parallel Aware": false,                                          +
+           "Async Capable": false,                                           +
+           "Startup Cost": 2.49,                                             +
+           "Total Cost": 2.64,                                               +
+           "Plan Rows": 15,                                                  +
+           "Plan Width": 12,                                                 +
+           "Actual Startup Time": 0.177,                                     +
+           "Actual Total Time": 0.182,                                       +
+           "Actual Rows": 15,                                                +
+           "Actual Loops": 1,                                                +
+           "Group Key": ["s.id_sala"],                                       +
+           "Planned Partitions": 0,                                          +
+           "HashAgg Batches": 1,                                             +
+           "Peak Memory Usage": 24,                                          +
+           "Disk Usage": 0,                                                  +
+           "Shared Hit Blocks": 2,                                           +
+           "Shared Read Blocks": 0,                                          +
+           "Shared Dirtied Blocks": 0,                                       +
+           "Shared Written Blocks": 0,                                       +
+           "Local Hit Blocks": 0,                                            +
+           "Local Read Blocks": 0,                                           +
+           "Local Dirtied Blocks": 0,                                        +
+           "Local Written Blocks": 0,                                        +
+           "Temp Read Blocks": 0,                                            +
+           "Temp Written Blocks": 0,                                         +
+           "Plans": [                                                        +
+             {                                                               +
+               "Node Type": "Hash Join",                                     +
+               "Parent Relationship": "Outer",                               +
+               "Parallel Aware": false,                                      +
+               "Async Capable": false,                                       +
+               "Join Type": "Left",                                          +
+               "Startup Cost": 1.20,                                         +
+               "Total Cost": 2.42,                                           +
+               "Plan Rows": 15,                                              +
+               "Plan Width": 8,                                              +
+               "Actual Startup Time": 0.143,                                 +
+               "Actual Total Time": 0.159,                                   +
+               "Actual Rows": 15,                                            +
+               "Actual Loops": 1,                                            +
+               "Inner Unique": false,                                        +
+               "Hash Cond": "(s.id_sala = t.id_sala)",                       +
+               "Shared Hit Blocks": 2,                                       +
+               "Shared Read Blocks": 0,                                      +
+               "Shared Dirtied Blocks": 0,                                   +
+               "Shared Written Blocks": 0,                                   +
+               "Local Hit Blocks": 0,                                        +
+               "Local Read Blocks": 0,                                       +
+               "Local Dirtied Blocks": 0,                                    +
+               "Local Written Blocks": 0,                                    +
+               "Temp Read Blocks": 0,                                        +
+               "Temp Written Blocks": 0,                                     +
+               "Plans": [                                                    +
+                 {                                                           +
+                   "Node Type": "Seq Scan",                                  +
+                   "Parent Relationship": "Outer",                           +
+                   "Parallel Aware": false,                                  +
+                   "Async Capable": false,                                   +
+                   "Relation Name": "sala_venta",                            +
+                   "Alias": "s",                                             +
+                   "Startup Cost": 0.00,                                     +
+                   "Total Cost": 1.15,                                       +
+                   "Plan Rows": 15,                                          +
+                   "Plan Width": 4,                                          +
+                   "Actual Startup Time": 0.017,                             +
+                   "Actual Total Time": 0.021,                               +
+                   "Actual Rows": 15,                                        +
+                   "Actual Loops": 1,                                        +
+                   "Shared Hit Blocks": 1,                                   +
+                   "Shared Read Blocks": 0,                                  +
+                   "Shared Dirtied Blocks": 0,                               +
+                   "Shared Written Blocks": 0,                               +
+                   "Local Hit Blocks": 0,                                    +
+                   "Local Read Blocks": 0,                                   +
+                   "Local Dirtied Blocks": 0,                                +
+                   "Local Written Blocks": 0,                                +
+                   "Temp Read Blocks": 0,                                    +
+                   "Temp Written Blocks": 0                                  +
+                 },                                                          +
+                 {                                                           +
+                   "Node Type": "Hash",                                      +
+                   "Parent Relationship": "Inner",                           +
+                   "Parallel Aware": false,                                  +
+                   "Async Capable": false,                                   +
+                   "Startup Cost": 1.19,                                     +
+                   "Total Cost": 1.19,                                       +
+                   "Plan Rows": 1,                                           +
+                   "Plan Width": 8,                                          +
+                   "Actual Startup Time": 0.022,                             +
+                   "Actual Total Time": 0.023,                               +
+                   "Actual Rows": 0,                                         +
+                   "Actual Loops": 1,                                        +
+                   "Hash Buckets": 1024,                                     +
+                   "Original Hash Buckets": 1024,                            +
+                   "Hash Batches": 1,                                        +
+                   "Original Hash Batches": 1,                               +
+                   "Peak Memory Usage": 8,                                   +
+                   "Shared Hit Blocks": 1,                                   +
+                   "Shared Read Blocks": 0,                                  +
+                   "Shared Dirtied Blocks": 0,                               +
+                   "Shared Written Blocks": 0,                               +
+                   "Local Hit Blocks": 0,                                    +
+                   "Local Read Blocks": 0,                                   +
+                   "Local Dirtied Blocks": 0,                                +
+                   "Local Written Blocks": 0,                                +
+                   "Temp Read Blocks": 0,                                    +
+                   "Temp Written Blocks": 0,                                 +
+                   "Plans": [                                                +
+                     {                                                       +
+                       "Node Type": "Seq Scan",                              +
+                       "Parent Relationship": "Outer",                       +
+                       "Parallel Aware": false,                              +
+                       "Async Capable": false,                               +
+                       "Relation Name": "transferencia",                     +
+                       "Alias": "t",                                         +
+                       "Startup Cost": 0.00,                                 +
+                       "Total Cost": 1.19,                                   +
+                       "Plan Rows": 1,                                       +
+                       "Plan Width": 8,                                      +
+                       "Actual Startup Time": 0.021,                         +
+                       "Actual Total Time": 0.022,                           +
+                       "Actual Rows": 0,                                     +
+                       "Actual Loops": 1,                                    +
+                       "Filter": "(estado <> 'procesado'::estado_documento)",+
+                       "Rows Removed by Filter": 15,                         +
+                       "Shared Hit Blocks": 1,                               +
+                       "Shared Read Blocks": 0,                              +
+                       "Shared Dirtied Blocks": 0,                           +
+                       "Shared Written Blocks": 0,                           +
+                       "Local Hit Blocks": 0,                                +
+                       "Local Read Blocks": 0,                               +
+                       "Local Dirtied Blocks": 0,                            +
+                       "Local Written Blocks": 0,                            +
+                       "Temp Read Blocks": 0,                                +
+                       "Temp Written Blocks": 0                              +
+                     }                                                       +
+                   ]                                                         +
+                 }                                                           +
+               ]                                                             +
+             }                                                               +
+           ]                                                                 +
+         }                                                                   +
+       ]                                                                     +
+     },                                                                      +
+     "Planning": {                                                           +
+       "Shared Hit Blocks": 17,                                              +
+       "Shared Read Blocks": 2,                                              +
+       "Shared Dirtied Blocks": 1,                                           +
+       "Shared Written Blocks": 0,                                           +
+       "Local Hit Blocks": 0,                                                +
+       "Local Read Blocks": 0,                                               +
+       "Local Dirtied Blocks": 0,                                            +
+       "Local Written Blocks": 0,                                            +
+       "Temp Read Blocks": 0,                                                +
+       "Temp Written Blocks": 0                                              +
+     },                                                                      +
+     "Planning Time": 1.935,                                                 +
+     "Triggers": [                                                           +
+     ],                                                                      +
+     "Execution Time": 0.331                                                 +
+   }                                                                         +
+ ]
+(1 row)
+
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+ANALYZE
+                                           QUERY PLAN                                            
+-------------------------------------------------------------------------------------------------
+ [                                                                                              +
+   {                                                                                            +
+     "Plan": {                                                                                  +
+       "Node Type": "Sort",                                                                     +
+       "Parallel Aware": false,                                                                 +
+       "Async Capable": false,                                                                  +
+       "Startup Cost": 1680.93,                                                                 +
+       "Total Cost": 1680.96,                                                                   +
+       "Plan Rows": 15,                                                                         +
+       "Plan Width": 36,                                                                        +
+       "Actual Startup Time": 113.591,                                                          +
+       "Actual Total Time": 113.593,                                                            +
+       "Actual Rows": 15,                                                                       +
+       "Actual Loops": 1,                                                                       +
+       "Sort Key": ["(sum(total)) DESC"],                                                       +
+       "Sort Method": "quicksort",                                                              +
+       "Sort Space Used": 25,                                                                   +
+       "Sort Space Type": "Memory",                                                             +
+       "Shared Hit Blocks": 6,                                                                  +
+       "Shared Read Blocks": 187,                                                               +
+       "Shared Dirtied Blocks": 0,                                                              +
+       "Shared Written Blocks": 0,                                                              +
+       "Local Hit Blocks": 0,                                                                   +
+       "Local Read Blocks": 0,                                                                  +
+       "Local Dirtied Blocks": 0,                                                               +
+       "Local Written Blocks": 0,                                                               +
+       "Temp Read Blocks": 0,                                                                   +
+       "Temp Written Blocks": 0,                                                                +
+       "Plans": [                                                                               +
+         {                                                                                      +
+           "Node Type": "Aggregate",                                                            +
+           "Strategy": "Hashed",                                                                +
+           "Partial Mode": "Simple",                                                            +
+           "Parent Relationship": "Outer",                                                      +
+           "Parallel Aware": false,                                                             +
+           "Async Capable": false,                                                              +
+           "Startup Cost": 1680.45,                                                             +
+           "Total Cost": 1680.63,                                                               +
+           "Plan Rows": 15,                                                                     +
+           "Plan Width": 36,                                                                    +
+           "Actual Startup Time": 113.567,                                                      +
+           "Actual Total Time": 113.575,                                                        +
+           "Actual Rows": 15,                                                                   +
+           "Actual Loops": 1,                                                                   +
+           "Group Key": ["id_sala"],                                                            +
+           "Planned Partitions": 0,                                                             +
+           "HashAgg Batches": 1,                                                                +
+           "Peak Memory Usage": 24,                                                             +
+           "Disk Usage": 0,                                                                     +
+           "Shared Hit Blocks": 6,                                                              +
+           "Shared Read Blocks": 187,                                                           +
+           "Shared Dirtied Blocks": 0,                                                          +
+           "Shared Written Blocks": 0,                                                          +
+           "Local Hit Blocks": 0,                                                               +
+           "Local Read Blocks": 0,                                                              +
+           "Local Dirtied Blocks": 0,                                                           +
+           "Local Written Blocks": 0,                                                           +
+           "Temp Read Blocks": 0,                                                               +
+           "Temp Written Blocks": 0,                                                            +
+           "Plans": [                                                                           +
+             {                                                                                  +
+               "Node Type": "Index Only Scan",                                                  +
+               "Parent Relationship": "Outer",                                                  +
+               "Parallel Aware": false,                                                         +
+               "Async Capable": false,                                                          +
+               "Scan Direction": "Forward",                                                     +
+               "Index Name": "idx_comprobante_fecha_incl",                                      +
+               "Relation Name": "comprobante",                                                  +
+               "Alias": "comprobante",                                                          +
+               "Startup Cost": 0.42,                                                            +
+               "Total Cost": 1494.04,                                                           +
+               "Plan Rows": 37281,                                                              +
+               "Plan Width": 12,                                                                +
+               "Actual Startup Time": 0.901,                                                    +
+               "Actual Total Time": 97.742,                                                     +
+               "Actual Rows": 37802,                                                            +
+               "Actual Loops": 1,                                                               +
+               "Index Cond": "((fecha >= '2024-10-16'::date) AND (fecha < '2025-01-16'::date))",+
+               "Rows Removed by Index Recheck": 0,                                              +
+               "Heap Fetches": 0,                                                               +
+               "Shared Hit Blocks": 6,                                                          +
+               "Shared Read Blocks": 187,                                                       +
+               "Shared Dirtied Blocks": 0,                                                      +
+               "Shared Written Blocks": 0,                                                      +
+               "Local Hit Blocks": 0,                                                           +
+               "Local Read Blocks": 0,                                                          +
+               "Local Dirtied Blocks": 0,                                                       +
+               "Local Written Blocks": 0,                                                       +
+               "Temp Read Blocks": 0,                                                           +
+               "Temp Written Blocks": 0                                                         +
+             }                                                                                  +
+           ]                                                                                    +
+         }                                                                                      +
+       ]                                                                                        +
+     },                                                                                         +
+     "Planning": {                                                                              +
+       "Shared Hit Blocks": 24,                                                                 +
+       "Shared Read Blocks": 5,                                                                 +
+       "Shared Dirtied Blocks": 0,                                                              +
+       "Shared Written Blocks": 0,                                                              +
+       "Local Hit Blocks": 0,                                                                   +
+       "Local Read Blocks": 0,                                                                  +
+       "Local Dirtied Blocks": 0,                                                               +
+       "Local Written Blocks": 0,                                                               +
+       "Temp Read Blocks": 0,                                                                   +
+       "Temp Written Blocks": 0                                                                 +
+     },                                                                                         +
+     "Planning Time": 3.383,                                                                    +
+     "Triggers": [                                                                              +
+     ],                                                                                         +
+     "Execution Time": 113.990                                                                  +
+   }                                                                                            +
+ ]
+(1 row)
+
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ [                                                                                                                            +
+   {                                                                                                                          +
+     "Plan": {                                                                                                                +
+       "Node Type": "Limit",                                                                                                  +
+       "Parallel Aware": false,                                                                                               +
+       "Async Capable": false,                                                                                                +
+       "Startup Cost": 10.57,                                                                                                 +
+       "Total Cost": 10.57,                                                                                                   +
+       "Plan Rows": 1,                                                                                                        +
+       "Plan Width": 12,                                                                                                      +
+       "Actual Startup Time": 0.022,                                                                                          +
+       "Actual Total Time": 0.024,                                                                                            +
+       "Actual Rows": 0,                                                                                                      +
+       "Actual Loops": 1,                                                                                                     +
+       "Shared Hit Blocks": 1,                                                                                                +
+       "Shared Read Blocks": 0,                                                                                               +
+       "Shared Dirtied Blocks": 0,                                                                                            +
+       "Shared Written Blocks": 0,                                                                                            +
+       "Local Hit Blocks": 0,                                                                                                 +
+       "Local Read Blocks": 0,                                                                                                +
+       "Local Dirtied Blocks": 0,                                                                                             +
+       "Local Written Blocks": 0,                                                                                             +
+       "Temp Read Blocks": 0,                                                                                                 +
+       "Temp Written Blocks": 0,                                                                                              +
+       "Plans": [                                                                                                             +
+         {                                                                                                                    +
+           "Node Type": "Sort",                                                                                               +
+           "Parent Relationship": "Outer",                                                                                    +
+           "Parallel Aware": false,                                                                                           +
+           "Async Capable": false,                                                                                            +
+           "Startup Cost": 10.57,                                                                                             +
+           "Total Cost": 10.57,                                                                                               +
+           "Plan Rows": 1,                                                                                                    +
+           "Plan Width": 12,                                                                                                  +
+           "Actual Startup Time": 0.021,                                                                                      +
+           "Actual Total Time": 0.022,                                                                                        +
+           "Actual Rows": 0,                                                                                                  +
+           "Actual Loops": 1,                                                                                                 +
+           "Sort Key": ["(sum(r.cantidad)) DESC", "t.id_sala"],                                                               +
+           "Sort Method": "quicksort",                                                                                        +
+           "Sort Space Used": 25,                                                                                             +
+           "Sort Space Type": "Memory",                                                                                       +
+           "Shared Hit Blocks": 1,                                                                                            +
+           "Shared Read Blocks": 0,                                                                                           +
+           "Shared Dirtied Blocks": 0,                                                                                        +
+           "Shared Written Blocks": 0,                                                                                        +
+           "Local Hit Blocks": 0,                                                                                             +
+           "Local Read Blocks": 0,                                                                                            +
+           "Local Dirtied Blocks": 0,                                                                                         +
+           "Local Written Blocks": 0,                                                                                         +
+           "Temp Read Blocks": 0,                                                                                             +
+           "Temp Written Blocks": 0,                                                                                          +
+           "Plans": [                                                                                                         +
+             {                                                                                                                +
+               "Node Type": "Aggregate",                                                                                      +
+               "Strategy": "Sorted",                                                                                          +
+               "Partial Mode": "Simple",                                                                                      +
+               "Parent Relationship": "Outer",                                                                                +
+               "Parallel Aware": false,                                                                                       +
+               "Async Capable": false,                                                                                        +
+               "Startup Cost": 10.54,                                                                                         +
+               "Total Cost": 10.56,                                                                                           +
+               "Plan Rows": 1,                                                                                                +
+               "Plan Width": 12,                                                                                              +
+               "Actual Startup Time": 0.017,                                                                                  +
+               "Actual Total Time": 0.018,                                                                                    +
+               "Actual Rows": 0,                                                                                              +
+               "Actual Loops": 1,                                                                                             +
+               "Group Key": ["t.id_sala"],                                                                                    +
+               "Shared Hit Blocks": 1,                                                                                        +
+               "Shared Read Blocks": 0,                                                                                       +
+               "Shared Dirtied Blocks": 0,                                                                                    +
+               "Shared Written Blocks": 0,                                                                                    +
+               "Local Hit Blocks": 0,                                                                                         +
+               "Local Read Blocks": 0,                                                                                        +
+               "Local Dirtied Blocks": 0,                                                                                     +
+               "Local Written Blocks": 0,                                                                                     +
+               "Temp Read Blocks": 0,                                                                                         +
+               "Temp Written Blocks": 0,                                                                                      +
+               "Plans": [                                                                                                     +
+                 {                                                                                                            +
+                   "Node Type": "Sort",                                                                                       +
+                   "Parent Relationship": "Outer",                                                                            +
+                   "Parallel Aware": false,                                                                                   +
+                   "Async Capable": false,                                                                                    +
+                   "Startup Cost": 10.54,                                                                                     +
+                   "Total Cost": 10.54,                                                                                       +
+                   "Plan Rows": 1,                                                                                            +
+                   "Plan Width": 8,                                                                                           +
+                   "Actual Startup Time": 0.016,                                                                              +
+                   "Actual Total Time": 0.017,                                                                                +
+                   "Actual Rows": 0,                                                                                          +
+                   "Actual Loops": 1,                                                                                         +
+                   "Sort Key": ["t.id_sala"],                                                                                 +
+                   "Sort Method": "quicksort",                                                                                +
+                   "Sort Space Used": 25,                                                                                     +
+                   "Sort Space Type": "Memory",                                                                               +
+                   "Shared Hit Blocks": 1,                                                                                    +
+                   "Shared Read Blocks": 0,                                                                                   +
+                   "Shared Dirtied Blocks": 0,                                                                                +
+                   "Shared Written Blocks": 0,                                                                                +
+                   "Local Hit Blocks": 0,                                                                                     +
+                   "Local Read Blocks": 0,                                                                                    +
+                   "Local Dirtied Blocks": 0,                                                                                 +
+                   "Local Written Blocks": 0,                                                                                 +
+                   "Temp Read Blocks": 0,                                                                                     +
+                   "Temp Written Blocks": 0,                                                                                  +
+                   "Plans": [                                                                                                 +
+                     {                                                                                                        +
+                       "Node Type": "Nested Loop",                                                                            +
+                       "Parent Relationship": "Outer",                                                                        +
+                       "Parallel Aware": false,                                                                               +
+                       "Async Capable": false,                                                                                +
+                       "Join Type": "Inner",                                                                                  +
+                       "Startup Cost": 0.28,                                                                                  +
+                       "Total Cost": 10.53,                                                                                   +
+                       "Plan Rows": 1,                                                                                        +
+                       "Plan Width": 8,                                                                                       +
+                       "Actual Startup Time": 0.013,                                                                          +
+                       "Actual Total Time": 0.014,                                                                            +
+                       "Actual Rows": 0,                                                                                      +
+                       "Actual Loops": 1,                                                                                     +
+                       "Inner Unique": true,                                                                                  +
+                       "Shared Hit Blocks": 1,                                                                                +
+                       "Shared Read Blocks": 0,                                                                               +
+                       "Shared Dirtied Blocks": 0,                                                                            +
+                       "Shared Written Blocks": 0,                                                                            +
+                       "Local Hit Blocks": 0,                                                                                 +
+                       "Local Read Blocks": 0,                                                                                +
+                       "Local Dirtied Blocks": 0,                                                                             +
+                       "Local Written Blocks": 0,                                                                             +
+                       "Temp Read Blocks": 0,                                                                                 +
+                       "Temp Written Blocks": 0,                                                                              +
+                       "Plans": [                                                                                             +
+                         {                                                                                                    +
+                           "Node Type": "Seq Scan",                                                                           +
+                           "Parent Relationship": "Outer",                                                                    +
+                           "Parallel Aware": false,                                                                           +
+                           "Async Capable": false,                                                                            +
+                           "Relation Name": "transferencia",                                                                  +
+                           "Alias": "t",                                                                                      +
+                           "Startup Cost": 0.00,                                                                              +
+                           "Total Cost": 1.23,                                                                                +
+                           "Plan Rows": 1,                                                                                    +
+                           "Plan Width": 8,                                                                                   +
+                           "Actual Startup Time": 0.013,                                                                      +
+                           "Actual Total Time": 0.013,                                                                        +
+                           "Actual Rows": 0,                                                                                  +
+                           "Actual Loops": 1,                                                                                 +
+                           "Filter": "((fecha_confeccion >= '2025-01-01'::date) AND (fecha_confeccion < '2025-01-16'::date))",+
+                           "Rows Removed by Filter": 15,                                                                      +
+                           "Shared Hit Blocks": 1,                                                                            +
+                           "Shared Read Blocks": 0,                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                        +
+                           "Shared Written Blocks": 0,                                                                        +
+                           "Local Hit Blocks": 0,                                                                             +
+                           "Local Read Blocks": 0,                                                                            +
+                           "Local Dirtied Blocks": 0,                                                                         +
+                           "Local Written Blocks": 0,                                                                         +
+                           "Temp Read Blocks": 0,                                                                             +
+                           "Temp Written Blocks": 0                                                                           +
+                         },                                                                                                   +
+                         {                                                                                                    +
+                           "Node Type": "Index Scan",                                                                         +
+                           "Parent Relationship": "Inner",                                                                    +
+                           "Parallel Aware": false,                                                                           +
+                           "Async Capable": false,                                                                            +
+                           "Scan Direction": "Forward",                                                                       +
+                           "Index Name": "renglon_transferencia_pkey",                                                        +
+                           "Relation Name": "renglon_transferencia",                                                          +
+                           "Alias": "r",                                                                                      +
+                           "Startup Cost": 0.28,                                                                              +
+                           "Total Cost": 8.30,                                                                                +
+                           "Plan Rows": 1,                                                                                    +
+                           "Plan Width": 8,                                                                                   +
+                           "Actual Startup Time": 0.000,                                                                      +
+                           "Actual Total Time": 0.000,                                                                        +
+                           "Actual Rows": 0,                                                                                  +
+                           "Actual Loops": 0,                                                                                 +
+                           "Index Cond": "((numero_solicitud = t.numero_solicitud) AND (cod_vino = 1))",                      +
+                           "Rows Removed by Index Recheck": 0,                                                                +
+                           "Shared Hit Blocks": 0,                                                                            +
+                           "Shared Read Blocks": 0,                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                        +
+                           "Shared Written Blocks": 0,                                                                        +
+                           "Local Hit Blocks": 0,                                                                             +
+                           "Local Read Blocks": 0,                                                                            +
+                           "Local Dirtied Blocks": 0,                                                                         +
+                           "Local Written Blocks": 0,                                                                         +
+                           "Temp Read Blocks": 0,                                                                             +
+                           "Temp Written Blocks": 0                                                                           +
+                         }                                                                                                    +
+                       ]                                                                                                      +
+                     }                                                                                                        +
+                   ]                                                                                                          +
+                 }                                                                                                            +
+               ]                                                                                                              +
+             }                                                                                                                +
+           ]                                                                                                                  +
+         }                                                                                                                    +
+       ]                                                                                                                      +
+     },                                                                                                                       +
+     "Planning": {                                                                                                            +
+       "Shared Hit Blocks": 49,                                                                                               +
+       "Shared Read Blocks": 2,                                                                                               +
+       "Shared Dirtied Blocks": 0,                                                                                            +
+       "Shared Written Blocks": 0,                                                                                            +
+       "Local Hit Blocks": 0,                                                                                                 +
+       "Local Read Blocks": 0,                                                                                                +
+       "Local Dirtied Blocks": 0,                                                                                             +
+       "Local Written Blocks": 0,                                                                                             +
+       "Temp Read Blocks": 0,                                                                                                 +
+       "Temp Written Blocks": 0                                                                                               +
+     },                                                                                                                       +
+     "Planning Time": 1.160,                                                                                                  +
+     "Triggers": [                                                                                                            +
+     ],                                                                                                                       +
+     "Execution Time": 0.058                                                                                                  +
+   }                                                                                                                          +
+ ]
+(1 row)
+
+                                  QUERY PLAN                                  
+------------------------------------------------------------------------------
+ [                                                                           +
+   {                                                                         +
+     "Plan": {                                                               +
+       "Node Type": "Sort",                                                  +
+       "Parallel Aware": false,                                              +
+       "Async Capable": false,                                               +
+       "Startup Cost": 2.93,                                                 +
+       "Total Cost": 2.97,                                                   +
+       "Plan Rows": 15,                                                      +
+       "Plan Width": 12,                                                     +
+       "Actual Startup Time": 0.051,                                         +
+       "Actual Total Time": 0.053,                                           +
+       "Actual Rows": 15,                                                    +
+       "Actual Loops": 1,                                                    +
+       "Sort Key": ["(count(t.numero_solicitud))", "s.id_sala"],             +
+       "Sort Method": "quicksort",                                           +
+       "Sort Space Used": 25,                                                +
+       "Sort Space Type": "Memory",                                          +
+       "Shared Hit Blocks": 2,                                               +
+       "Shared Read Blocks": 0,                                              +
+       "Shared Dirtied Blocks": 0,                                           +
+       "Shared Written Blocks": 0,                                           +
+       "Local Hit Blocks": 0,                                                +
+       "Local Read Blocks": 0,                                               +
+       "Local Dirtied Blocks": 0,                                            +
+       "Local Written Blocks": 0,                                            +
+       "Temp Read Blocks": 0,                                                +
+       "Temp Written Blocks": 0,                                             +
+       "Plans": [                                                            +
+         {                                                                   +
+           "Node Type": "Aggregate",                                         +
+           "Strategy": "Hashed",                                             +
+           "Partial Mode": "Simple",                                         +
+           "Parent Relationship": "Outer",                                   +
+           "Parallel Aware": false,                                          +
+           "Async Capable": false,                                           +
+           "Startup Cost": 2.49,                                             +
+           "Total Cost": 2.64,                                               +
+           "Plan Rows": 15,                                                  +
+           "Plan Width": 12,                                                 +
+           "Actual Startup Time": 0.036,                                     +
+           "Actual Total Time": 0.041,                                       +
+           "Actual Rows": 15,                                                +
+           "Actual Loops": 1,                                                +
+           "Group Key": ["s.id_sala"],                                       +
+           "Planned Partitions": 0,                                          +
+           "HashAgg Batches": 1,                                             +
+           "Peak Memory Usage": 24,                                          +
+           "Disk Usage": 0,                                                  +
+           "Shared Hit Blocks": 2,                                           +
+           "Shared Read Blocks": 0,                                          +
+           "Shared Dirtied Blocks": 0,                                       +
+           "Shared Written Blocks": 0,                                       +
+           "Local Hit Blocks": 0,                                            +
+           "Local Read Blocks": 0,                                           +
+           "Local Dirtied Blocks": 0,                                        +
+           "Local Written Blocks": 0,                                        +
+           "Temp Read Blocks": 0,                                            +
+           "Temp Written Blocks": 0,                                         +
+           "Plans": [                                                        +
+             {                                                               +
+               "Node Type": "Hash Join",                                     +
+               "Parent Relationship": "Outer",                               +
+               "Parallel Aware": false,                                      +
+               "Async Capable": false,                                       +
+               "Join Type": "Left",                                          +
+               "Startup Cost": 1.20,                                         +
+               "Total Cost": 2.42,                                           +
+               "Plan Rows": 15,                                              +
+               "Plan Width": 8,                                              +
+               "Actual Startup Time": 0.020,                                 +
+               "Actual Total Time": 0.026,                                   +
+               "Actual Rows": 15,                                            +
+               "Actual Loops": 1,                                            +
+               "Inner Unique": false,                                        +
+               "Hash Cond": "(s.id_sala = t.id_sala)",                       +
+               "Shared Hit Blocks": 2,                                       +
+               "Shared Read Blocks": 0,                                      +
+               "Shared Dirtied Blocks": 0,                                   +
+               "Shared Written Blocks": 0,                                   +
+               "Local Hit Blocks": 0,                                        +
+               "Local Read Blocks": 0,                                       +
+               "Local Dirtied Blocks": 0,                                    +
+               "Local Written Blocks": 0,                                    +
+               "Temp Read Blocks": 0,                                        +
+               "Temp Written Blocks": 0,                                     +
+               "Plans": [                                                    +
+                 {                                                           +
+                   "Node Type": "Seq Scan",                                  +
+                   "Parent Relationship": "Outer",                           +
+                   "Parallel Aware": false,                                  +
+                   "Async Capable": false,                                   +
+                   "Relation Name": "sala_venta",                            +
+                   "Alias": "s",                                             +
+                   "Startup Cost": 0.00,                                     +
+                   "Total Cost": 1.15,                                       +
+                   "Plan Rows": 15,                                          +
+                   "Plan Width": 4,                                          +
+                   "Actual Startup Time": 0.007,                             +
+                   "Actual Total Time": 0.008,                               +
+                   "Actual Rows": 15,                                        +
+                   "Actual Loops": 1,                                        +
+                   "Shared Hit Blocks": 1,                                   +
+                   "Shared Read Blocks": 0,                                  +
+                   "Shared Dirtied Blocks": 0,                               +
+                   "Shared Written Blocks": 0,                               +
+                   "Local Hit Blocks": 0,                                    +
+                   "Local Read Blocks": 0,                                   +
+                   "Local Dirtied Blocks": 0,                                +
+                   "Local Written Blocks": 0,                                +
+                   "Temp Read Blocks": 0,                                    +
+                   "Temp Written Blocks": 0                                  +
+                 },                                                          +
+                 {                                                           +
+                   "Node Type": "Hash",                                      +
+                   "Parent Relationship": "Inner",                           +
+                   "Parallel Aware": false,                                  +
+                   "Async Capable": false,                                   +
+                   "Startup Cost": 1.19,                                     +
+                   "Total Cost": 1.19,                                       +
+                   "Plan Rows": 1,                                           +
+                   "Plan Width": 8,                                          +
+                   "Actual Startup Time": 0.008,                             +
+                   "Actual Total Time": 0.009,                               +
+                   "Actual Rows": 0,                                         +
+                   "Actual Loops": 1,                                        +
+                   "Hash Buckets": 1024,                                     +
+                   "Original Hash Buckets": 1024,                            +
+                   "Hash Batches": 1,                                        +
+                   "Original Hash Batches": 1,                               +
+                   "Peak Memory Usage": 8,                                   +
+                   "Shared Hit Blocks": 1,                                   +
+                   "Shared Read Blocks": 0,                                  +
+                   "Shared Dirtied Blocks": 0,                               +
+                   "Shared Written Blocks": 0,                               +
+                   "Local Hit Blocks": 0,                                    +
+                   "Local Read Blocks": 0,                                   +
+                   "Local Dirtied Blocks": 0,                                +
+                   "Local Written Blocks": 0,                                +
+                   "Temp Read Blocks": 0,                                    +
+                   "Temp Written Blocks": 0,                                 +
+                   "Plans": [                                                +
+                     {                                                       +
+                       "Node Type": "Seq Scan",                              +
+                       "Parent Relationship": "Outer",                       +
+                       "Parallel Aware": false,                              +
+                       "Async Capable": false,                               +
+                       "Relation Name": "transferencia",                     +
+                       "Alias": "t",                                         +
+                       "Startup Cost": 0.00,                                 +
+                       "Total Cost": 1.19,                                   +
+                       "Plan Rows": 1,                                       +
+                       "Plan Width": 8,                                      +
+                       "Actual Startup Time": 0.008,                         +
+                       "Actual Total Time": 0.008,                           +
+                       "Actual Rows": 0,                                     +
+                       "Actual Loops": 1,                                    +
+                       "Filter": "(estado <> 'procesado'::estado_documento)",+
+                       "Rows Removed by Filter": 15,                         +
+                       "Shared Hit Blocks": 1,                               +
+                       "Shared Read Blocks": 0,                              +
+                       "Shared Dirtied Blocks": 0,                           +
+                       "Shared Written Blocks": 0,                           +
+                       "Local Hit Blocks": 0,                                +
+                       "Local Read Blocks": 0,                               +
+                       "Local Dirtied Blocks": 0,                            +
+                       "Local Written Blocks": 0,                            +
+                       "Temp Read Blocks": 0,                                +
+                       "Temp Written Blocks": 0                              +
+                     }                                                       +
+                   ]                                                         +
+                 }                                                           +
+               ]                                                             +
+             }                                                               +
+           ]                                                                 +
+         }                                                                   +
+       ]                                                                     +
+     },                                                                      +
+     "Planning": {                                                           +
+       "Shared Hit Blocks": 12,                                              +
+       "Shared Read Blocks": 0,                                              +
+       "Shared Dirtied Blocks": 0,                                           +
+       "Shared Written Blocks": 0,                                           +
+       "Local Hit Blocks": 0,                                                +
+       "Local Read Blocks": 0,                                               +
+       "Local Dirtied Blocks": 0,                                            +
+       "Local Written Blocks": 0,                                            +
+       "Temp Read Blocks": 0,                                                +
+       "Temp Written Blocks": 0                                              +
+     },                                                                      +
+     "Planning Time": 0.246,                                                 +
+     "Triggers": [                                                           +
+     ],                                                                      +
+     "Execution Time": 0.089                                                 +
+   }                                                                         +
+ ]
+(1 row)
+
+ROLLBACK

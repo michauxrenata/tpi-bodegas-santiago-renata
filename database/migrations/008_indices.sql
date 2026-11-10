@@ -16,3 +16,8 @@ CREATE INDEX idx_transferencia_fecha_sala ON transferencia (fecha_confeccion, id
 -- S12a: buscar las compras de un cliente sin recorrer todos los comprobantes.
 CREATE INDEX IF NOT EXISTS idx_comprobante_cliente_numero
 ON public.comprobante (id_cliente, numero_comprobante);
+
+-- 6. FK inversa: filtra por vino y cubre cantidad para S4.
+CREATE INDEX idx_renglon_transferencia_vino_solicitud
+ON public.renglon_transferencia (cod_vino, numero_solicitud)
+INCLUDE (cantidad);

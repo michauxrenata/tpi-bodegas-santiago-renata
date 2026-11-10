@@ -1,0 +1,19 @@
+﻿H4 — COSTO DE ESCRITURA DEL ÍNDICE S4
+PostgreSQL 16.15 · Base de evaluación: bodegas_h4_bench
+Prueba: INSERT de 10.000 renglones con EXPLAIN (ANALYZE, BUFFERS, TIMING OFF).
+Cada ejecución terminó con ROLLBACK.
+
+Repetición 1
+Sin índice: 863.149 ms; buffers hit=90541, read=1, dirtied=111, written=103.
+Con índice: 1160.121 ms; buffers hit=130091, read=5, dirtied=126, written=123.
+
+Repetición 2
+Sin índice: 845.868 ms; buffers hit=100245, dirtied=160, written=54.
+Con índice: 893.096 ms; buffers hit=130089, read=5, dirtied=126, written=123.
+
+Repetición 3
+Sin índice: 1177.192 ms; buffers hit=100280, dirtied=54, written=54.
+Con índice: 1051.814 ms; buffers hit=130088, read=5, dirtied=126, written=123.
+
+Los tiempos variaron entre repeticiones; no se atribuye un porcentaje fijo de sobrecosto.
+El índice aumentó la actividad de buffers compartidos en estas inserciones.
